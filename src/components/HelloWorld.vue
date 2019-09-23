@@ -1,18 +1,12 @@
 <template>
   <div class="hello">
-    <el-table :data="tableData" style="width: 100%" :row-class-name="tableRowClassName">
-      <el-table-column prop="date" label="日期" width="180">
-      </el-table-column>
-      <el-table-column prop="name" label="姓名" width="180">
-      </el-table-column>
-      <el-table-column prop="address" label="地址">
-      </el-table-column>
-    </el-table>
+    <tableas v-bind:message="tabledata"></tableas>
     <div class="click" @click="add">add one</div>
   </div>
 </template>
 
 <script>
+  import tableas from './manager.vue'
   export default {
     name: 'HelloWorld',
     data() {
@@ -20,31 +14,25 @@
         msg: 'Welcome to Your Vue.js App',
         value1: true,
         value2: true,
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }]
+        tabledata: [{
+            date: '2016-05-02',
+            name: '王小虎',
+            ddress: '上海市普陀区金沙江路 1518 弄',
+          },
+          {
+            date: '2016-05-04',
+            name: '王jikjk',
+            address: '上海市普陀区金沙江路 1518 弄'
+          }
+        ]
       }
     },
+    components: {
+      tableas
+    },
     methods: {
-      tableRowClassName({
-        row,
-        rowIndex
-      }) {
-        if (rowIndex === 1) {
-          return 'warning-row';
-        } else if (rowIndex === 3) {
-          return 'success-row';
-        }
-        return '';
-      },
-      add(){
-        this.tableData.push({
+      add() {
+        this.tabledata.push({
           date: '2016-05-04',
           name: 'xiaozhao',
           address: '上海da'
