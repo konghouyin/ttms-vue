@@ -1,4 +1,4 @@
-<template>
+`<template>
   <div class="manager">
     <div class="manager-body">
       <div class="manager-title">星云影院</div>
@@ -15,7 +15,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .manager {
     height: 42px;
     width: 100%;

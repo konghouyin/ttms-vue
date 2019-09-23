@@ -14,43 +14,39 @@
               formdata:[{title:"剧目管理",
               son:[{
                 title:"剧目查询",
-                link:"/play/query"
+                link:"/manager/play/query"
               },
               {
                 title:"增加剧目",
-                link:"/play/add"
+                link:"/manager/play/add"
                 },
                 {
                 title:"修改剧目",
-                link:"/play/change",
+                link:"/manager/play/change",
                 }
               ]},
               {title:"影厅管理",
               son:[{
                 title:"影厅查询",
-                link:"/cinema/query"
+                link:"/manager/cinema/query"
               },
               {
                 title:"增加影厅",
-                link:"/cinema/add"
+                link:"/manager/cinema/add"
                 },
                 {
                 title:"修改影厅",
-                link:"/cinema/change",
+                link:"/manager/cinema/change",
                 }
               ]},
               {title:"计划管理",
               son:[{
                 title:"计划查询",
-                link:"/plan/query"
+                link:"/manager/plan/query"
               },
               {
                 title:"增加计划",
-                link:"/plan/add"
-                },
-                {
-                title:"修改计划",
-                link:"/plan/change",
+                link:"/manager/plan/add"
                 }
               ]}]
           }
@@ -58,6 +54,9 @@
     components: {
       formfather
     },
+    props:{
+      
+    }
   }
 </script>
 

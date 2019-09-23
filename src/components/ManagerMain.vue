@@ -2,7 +2,10 @@
   <div class="manager-main-body">
     <m-top></m-top>
     <div class="manager-local-father">
-        <router-view/>
+        <el-container style="height: 600px; border: 1px solid #eee; margin-top: 3px;" >
+          <m-form></m-form>
+            <router-view/>
+          </el-container>
     </div>
   </div>
 
@@ -10,15 +13,19 @@
 
 <script>
   import mTop from './ManagerTop.vue'
+  import mForm from './ManagerForm.vue'
   export default {
     data() {
         return{
-          
+
         }
         },
     components: {
-      mTop
+      mTop,mForm
     },
+    props:{
+      
+    }
   }
 </script>
 
