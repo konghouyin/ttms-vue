@@ -11,8 +11,9 @@ import mtable2 from '@/components/ManagerFormPlay'
 import mPlayChange from '@/components/ManagerPlayChange'
 import mCinema from '@/components/ManagerCinema'
 import mCinemaAdd from '@/components/ManagerCinemaAdd'
-
-
+import mCinemaChange from '@/components/ManagerCinemaChange'
+import mPlanQuery from '@/components/ManagerPlanQuery'
+import mPlanAdd from '@/components/ManagerPlanAdd'
 import finance from '@/components/FinanceMain'
 
 
@@ -43,6 +44,18 @@ export default new Router({
       {
         path: 'cinema/add',
         component: mCinemaAdd
+      },
+      {
+        path: 'cinema/change',
+        component: mCinemaChange
+      },
+      {
+        path: 'plan/query',
+        component: mPlanQuery
+      },
+      {
+        path: 'plan/add',
+        component: mPlanAdd
       }
     ]
   }, {
