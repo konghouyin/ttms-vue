@@ -11,31 +11,37 @@ import mtable from '@/components/ManagerTable'
 import mtable2 from '@/components/ManagerFormPlay'
 import mPlayChange from '@/components/ManagerPlayChange'
 
+import finance from '@/components/FinanceMain'
+
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
-    path: '/',
-    component: ManagerMain,
-    children: [{
+      path: '/finance',
+      component: finance,
+
+    },
+    {
+      path: '/',
+      component: ManagerMain,
+      children: [{
         path: '',
         component: formtable,
         children: [{
           path: '',
-          component:mtable
-        },{
+          component: mtable
+        }, {
           path: '/play/query',
-          component:mtable
-        },{
+          component: mtable
+        }, {
           path: '/play/add',
-          component:mtable2
-        },{
+          component: mtable2
+        }, {
           path: '/play/change',
-          component:mPlayChange
-        }
-        ]
-      }
-    ]
-  }]
+          component: mPlayChange
+        }]
+      }]
+    }
+  ]
 })
