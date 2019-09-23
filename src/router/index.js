@@ -12,6 +12,8 @@ import mPlayChange from '@/components/ManagerPlayChange'
 import mCinema from '@/components/ManagerCinema'
 import mCinemaAdd from '@/components/ManagerCinemaAdd'
 
+import Admin from '@/components/AdminMain'
+
 Vue.use(Router)
 
 export default new Router({
@@ -41,5 +43,8 @@ export default new Router({
         }
         ]
 
+  },{
+	  path: '/admin',
+	  component:Admin
   }]
 })

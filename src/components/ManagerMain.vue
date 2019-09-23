@@ -5,7 +5,7 @@
         <el-container style="height: 600px; border: 1px solid #eee; margin-top: 3px;" >
           <m-form></m-form>
             <router-view/>
-          </el-container>
+        </el-container>
     </div>
   </div>
 
