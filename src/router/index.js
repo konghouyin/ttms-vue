@@ -12,34 +12,41 @@ import mPlayChange from '@/components/ManagerPlayChange'
 import mCinema from '@/components/ManagerCinema'
 import mCinemaAdd from '@/components/ManagerCinemaAdd'
 
+
+import finance from '@/components/FinanceMain'
+
+
+
 Vue.use(Router)
 
 export default new Router({
   routes: [{
     path: '/manager',
     component: ManagerMain,
-        children: [{
-          path: '',
-          component:mtable
-        },{
-          path: 'play/query',
-          component:mtable
-        },{
-          path: 'play/add',
-          component:mtable2
-        },{
-          path: 'play/change',
-          component:mPlayChange
-        },
-        {
-          path: 'cinema/query',
-          component: mCinema
-        },
-        {
-          path: 'cinema/add',
-          component: mCinemaAdd
-        }
-        ]
-
+    children: [{
+        path: '',
+        component: mtable
+      }, {
+        path: 'play/query',
+        component: mtable
+      }, {
+        path: 'play/add',
+        component: mtable2
+      }, {
+        path: 'play/change',
+        component: mPlayChange
+      },
+      {
+        path: 'cinema/query',
+        component: mCinema
+      },
+      {
+        path: 'cinema/add',
+        component: mCinemaAdd
+      }
+    ]
+  }, {
+    path: '/finance',
+    component: finance,
   }]
 })
