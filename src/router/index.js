@@ -15,51 +15,67 @@ import mCinemaChange from '@/components/ManagerCinemaChange'
 import mPlanQuery from '@/components/ManagerPlanQuery'
 import mPlanAdd from '@/components/ManagerPlanAdd'
 import finance from '@/components/FinanceMain'
-
-
+import log from '@/components/log'
+import login from '@/components/login'
+import logon from '@/components/logon'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
-    path: '/manager',
-    component: ManagerMain,
-    children: [{
-        path: '',
-        component: mtable
-      }, {
-        path: 'play/query',
-        component: mtable
-      }, {
-        path: 'play/add',
-        component: mtable2
-      }, {
-        path: 'play/change',
-        component: mPlayChange
+      path: '/manager',
+      component: ManagerMain,
+      children: [{
+          path: '',
+          component: mtable
+        }, {
+          path: 'play/query',
+          component: mtable
+        }, {
+          path: 'play/add',
+          component: mtable2
+        }, {
+          path: 'play/change',
+          component: mPlayChange
+        },
+        {
+          path: 'cinema/query',
+          component: mCinema
+        },
+        {
+          path: 'cinema/add',
+          component: mCinemaAdd
+        },
+        {
+          path: 'cinema/change',
+          component: mCinemaChange
+        },
+        {
+          path: 'plan/query',
+          component: mPlanQuery
+        },
+        {
+          path: 'plan/add',
+          component: mPlanAdd
+        }
+      ]
+    }, {
+      path: '/finance',
+      component: finance,
+    },
+    {
+      path: '/log',
+      component: log,
+      children: [{
+          path: '',
+          component: login,
+        },{
+        path: 'login',
+        component: login,
       },
       {
-        path: 'cinema/query',
-        component: mCinema
-      },
-      {
-        path: 'cinema/add',
-        component: mCinemaAdd
-      },
-      {
-        path: 'cinema/change',
-        component: mCinemaChange
-      },
-      {
-        path: 'plan/query',
-        component: mPlanQuery
-      },
-      {
-        path: 'plan/add',
-        component: mPlanAdd
-      }
-    ]
-  }, {
-    path: '/finance',
-    component: finance,
+        path: 'logon',
+        component: logon,
+      }]
   }]
 })
