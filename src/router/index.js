@@ -11,14 +11,10 @@ import mtable2 from '@/components/ManagerFormPlay'
 import mPlayChange from '@/components/ManagerPlayChange'
 import mCinema from '@/components/ManagerCinema'
 import mCinemaAdd from '@/components/ManagerCinemaAdd'
-import mCinemaChange from '@/components/ManagerCinemaChange'
-import mPlanQuery from '@/components/ManagerPlanQuery'
-import mPlanAdd from '@/components/ManagerPlanAdd'
-import finance from '@/components/FinanceMain'
-
-
 
 import Admin from '@/components/AdminMain'
+import userShow from '@/components/User_show'
+import userModify from '@/components/User_modify'
 
 Vue.use(Router)
 
@@ -26,7 +22,6 @@ export default new Router({
   routes: [{
     path: '/manager',
     component: ManagerMain,
-<<<<<<< HEAD
         children: [{
           path: '',
           component:mtable
@@ -52,45 +47,16 @@ export default new Router({
 
   },{
 	  path: '/admin',
-	  component:Admin
-=======
-    children: [{
-        path: '',
-        component: mtable
-      }, {
-        path: 'play/query',
-        component: mtable
-      }, {
-        path: 'play/add',
-        component: mtable2
-      }, {
-        path: 'play/change',
-        component: mPlayChange
-      },
-      {
-        path: 'cinema/query',
-        component: mCinema
-      },
-      {
-        path: 'cinema/add',
-        component: mCinemaAdd
-      },
-      {
-        path: 'cinema/change',
-        component: mCinemaChange
-      },
-      {
-        path: 'plan/query',
-        component: mPlanQuery
-      },
-      {
-        path: 'plan/add',
-        component: mPlanAdd
-      }
-    ]
-  }, {
-    path: '/finance',
-    component: finance,
->>>>>>> 917d9150560230f7156fd3c1cf254686c38c7bd1
+	  component:Admin,
+		children:[{
+			path: '',
+			component: userShow
+		},{
+			path: 'user/show',
+			component:userShow
+		},{
+			path: 'user/modify',
+			component:userModify
+		}]
   }]
 })

@@ -2,17 +2,10 @@
   <div class="manager-main-body">
     <m-top></m-top>
     <div class="manager-local-father">
-<<<<<<< HEAD
-        <el-container style="height: 600px; border: 1px solid #eee; margin-top: 3px;" >
-          <m-form></m-form>
-            <router-view/>
-        </el-container>
-=======
       <el-container style="height: 600px; border: 1px solid #eee; margin-top: 3px;">
         <m-form :data="formdata"></m-form>
         <router-view />
       </el-container>
->>>>>>> 917d9150560230f7156fd3c1cf254686c38c7bd1
     </div>
   </div>
 

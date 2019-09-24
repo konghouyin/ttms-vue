@@ -26,7 +26,6 @@
     methods: {
       tableRowClassName({
         row,
-
         rowIndex
       }) {
         if (rowIndex === 1) {
