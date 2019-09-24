@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  import eventBus from '../eventBus.js'
   import formfather from './ManagerFormFather.vue'
   export default {
     data() {
@@ -19,6 +20,18 @@
     },
     components: {
       formfather
+    },
+     created:function(){
+       console.log(22)
+        this.addlink()
+     },
+    methods:{
+      addlink: function(){
+        eventBus.$on('playadd',function(data){
+          console.log(223)
+            console.log(data)
+        })
+      }
     }
   }
 </script>
