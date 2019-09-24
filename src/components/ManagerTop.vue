@@ -1,8 +1,8 @@
-<template>
+`<template>
   <div class="manager">
     <div class="manager-body">
       <div class="manager-title">星云影院</div>
-      <div class="manager-router"><span>首页</span><span>我的</span><span>注销</span><span>联系我们</span></div>
+      <div class="manager-router"><span  >首页</span><span>我的</span><span>注销</span><span>联系我们</span></div>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .manager {
     height: 42px;
     width: 100%;
