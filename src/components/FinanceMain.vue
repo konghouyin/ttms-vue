@@ -28,31 +28,15 @@
             title: "财务管理",
             son: [{
                 title: "财务查询",
-                link: "/play/query"
+                link: "/finance/a"
               },
               {
                 title: "增加财务",
-                link: "/play/add"
+                link: "/finance/b"
               },
               {
                 title: "修改财务",
-                link: "/play/change",
-              }
-            ]
-          },
-          {
-            title: "计划管理",
-            son: [{
-                title: "计划查询",
-                link: "/plan/query"
-              },
-              {
-                title: "增加计划",
-                link: "/plan/add"
-              },
-              {
-                title: "修改计划",
-                link: "/plan/change",
+                link: "/finance/c"
               }
             ]
           }

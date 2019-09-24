@@ -20,6 +20,7 @@ export default new Router({
   routes: [{
       path: '/finance',
       component: finance,
+      
 
     },
     {
