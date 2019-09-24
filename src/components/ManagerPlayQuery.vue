@@ -21,13 +21,8 @@
               placeholder="输入关键字搜索"/>
           </div>
           <div slot-scope="scope" style="display: flex;align-items:center;justify-content:space-around">
-            <el-button
-              size="mini"
-              @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-            <el-button
-              size="mini"
-              type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            <el-button size="small" type="primary" icon="el-icon-edit" circle @click="handleEdit(scope.$index, scope.row)"></el-button>
+            <el-button size="small" type="danger"  icon="el-icon-delete" circle @click="handleDelete(scope.$index, scope.row)"></el-button>
           </div>
         </el-table-column>
       </el-table>

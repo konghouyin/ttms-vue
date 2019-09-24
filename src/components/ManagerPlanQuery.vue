@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-main style="overflow: auto; padding: 0;">
-      <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+      <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase())|| data.pname.toLowerCase().includes(search.toLowerCase()))"
         style="width: 100%;">
         <el-table-column prop="order" label="编号" width="50px">
         </el-table-column>
@@ -20,8 +20,8 @@
             <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
           </div>
           <div slot-scope="scope" style="display: flex;align-items:center;justify-content:space-around">
-            <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-            <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            <el-button size="small" type="primary" icon="el-icon-edit" circle disabled @click="handleEdit(scope.$index, scope.row)"></el-button>
+            <el-button size="small" type="danger"  icon="el-icon-delete" circle @click="handleDelete(scope.$index, scope.row)"></el-button>
           </div>
         </el-table-column>
       </el-table>
@@ -41,7 +41,8 @@
         endTime: '11:50'
       };
       return {
-        tableData: Array(20).fill(item)
+        tableData: Array(20).fill(item),
+        search:''
       }
     },
     methods: {
