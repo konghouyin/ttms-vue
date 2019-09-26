@@ -11,6 +11,7 @@ import mCinemaChange from '@/components/ManagerCinemaChange'
 import mPlanQuery from '@/components/ManagerPlanQuery'
 import mPlanAdd from '@/components/ManagerPlanAdd'
 import finance from '@/components/FinanceMain'
+import conductor from '@/components/Conductor'
 import log from '@/components/log'
 import login from '@/components/login'
 import logon from '@/components/logon'
@@ -19,7 +20,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [{
-
+      path: '/manager',
       component: ManagerMain,
       children: [{
           path: '',
@@ -53,11 +54,15 @@ export default new Router({
         {
           path: 'plan/add',
           component: mPlanAdd
+        },
+        {
+          path: 'finance',
+          component: finance,
+        },{
+          path: 'conductor',
+          component:conductor
         }
       ]
-    }, {
-      path: '/finance',
-      component: finance,
     },
     {
       path: '/log',

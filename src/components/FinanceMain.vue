@@ -1,74 +1,122 @@
 <template>
   <div>
-    <m-top></m-top>
-    <div class="body">
-      <div class="left">
-        <m-form :data="formdata"></m-form>
-      </div>
-      <div class="right">
-        <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-          <el-tab-pane label="用户管理" name="first" class="asd"></el-tab-pane>
-          <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-          <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-          <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
-        </el-tabs>
-      </div>
+    <div style="width:540">
+      <el-table :data="tableData3" height="250" border style="width: 100%;">
+        <el-table-column prop="name" label="电影名" width="300">
+        </el-table-column>
+        <el-table-column prop="time" label="上映时长" width="180">
+        </el-table-column>
+        <el-table-column prop="money" label="票房" width="200">
+        </el-table-column>
+      </el-table>
+
     </div>
+    <div style="height: 10px;"></div>
+
+    <div id="container" style="width:700px;height:400px"></div>
   </div>
+
 </template>
 
 <script>
-  import mForm from './ManagerForm.vue'
-  import mTop from './ManagerTop.vue'
   export default {
     data() {
       return {
-        activeName: 'first',
-        formdata: [{
-            title: "财务管理",
-            son: [{
-                title: "财务查询",
-                link: "/finance/a"
-              },
-              {
-                title: "增加财务",
-                link: "/finance/b"
-              },
-              {
-                title: "修改财务",
-                link: "/finance/c"
-              }
-            ]
+        tableData3: [{
+          name: '罗小黑战记',
+          time: '15',
+          money: '17231314'
+        }, {
+          name: '罗小黑战记',
+          time: '15',
+          money: '17231314'
+        }, {
+          name: '罗小黑战记',
+          time: '15',
+          money: '17231314'
+        }, {
+          name: '罗小黑战记',
+          time: '15',
+          money: '17231314'
+        }, {
+          name: '罗小黑战记',
+          time: '15',
+          money: '17231314'
+        }, {
+          name: '罗小黑战记',
+          time: '15',
+          money: '17231314'
+        }, {
+          name: '罗小黑战记',
+          time: '15',
+          money: '17231314'
+        }, {
+          name: '罗小黑战记',
+          time: '15',
+          money: '17231314'
+        }, {
+          name: '罗小黑战记',
+          time: '15',
+          money: '17231314'
+        }]
+      }
+    },
+    mounted() {
+      var chart = Highcharts.chart('container', {
+        title: {
+          text: '本周票房'
+        },
+        subtitle: {
+
+        },
+        yAxis: {
+          title: {
+            text: '票房单位（元）'
           }
-        ]
-      }
-    },
-    methods: {
-      handleClick(tab, event) {
-        console.log(tab, event);
-      }
-    },
-    components: {
-      mTop,
-      mForm
+        },xAxis:{
+          title:{
+            text:'日期'
+          },
+      categories: ['星期0','星期1','星期2','星期3','星期4','星期5','星期6','星期7',]
+   },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'middle',
+          borderWidth:0
+        },
+        plotOptions: {
+          series: {
+            label: {
+              connectorAllowed: false
+            },
+            pointStart: 1
+          }
+        },
+        series: [{
+          name: '罗小黑战记',
+          data: [439, 123, 23, 517
+          ]
+        },{
+          name: '罗小黑战记',
+          data: [439, 123, 23, 517,23, 517, 517,23, 517
+          ]
+        }],
+        responsive: {
+          rules: [{
+            condition: {
+              maxWidth: 1000
+            },
+            chartOptions: {
+              legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+              }
+            }
+          }]
+        }
+      });
     }
   }
 </script>
-
-<style scoped>
-  .body{
-    width:800px;
-    margin: 0 auto;
-  }
-  .left {
-    float: left;
-    width: 200px;
-  }
-
-  .right {
-    margin-left: 200px;
-  }
-  .asd{
-    font-size: 30px;
-    }
-</style>

@@ -60,6 +60,17 @@
                 link: "/manager/plan/add"
               }
             ]
+          },
+          {
+            title: "财务管理",
+            son: [{
+              title: "统计报表",
+              link: "/manager/finance"
+            },
+            {
+              title: "员工业绩",
+              link: "/manager/conductor"
+            }]
           }
         ]
       }
