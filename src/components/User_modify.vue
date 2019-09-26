@@ -1,5 +1,5 @@
 <template>
-	<div class="modify_body">
+	<div class="modify_body" style="overflow: hidden;">
 		<div class="body_top">
 			<el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
 				<el-form-item label="用户名" prop="username">
