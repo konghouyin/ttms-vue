@@ -15,6 +15,10 @@ import mCinemaAdd from '@/components/ManagerCinemaAdd'
 import Admin from '@/components/AdminMain'
 import userShow from '@/components/User_show'
 import userModify from '@/components/User_modify'
+import userAdd from '@/components/User_add'
+import commentShow from '@/components/Comment_show'
+import videoPlay from '@/components/Video_Play'
+import commentTypeFilter from '@/components/CommentType_filter'
 
 Vue.use(Router)
 
@@ -57,6 +61,15 @@ export default new Router({
 		},{
 			path: 'user/modify',
 			component:userModify
+		},{
+			path: 'user/add',
+			component:userAdd
+		},{
+			path: 'comment/show',
+			component:commentShow
+		},{
+			path: 'comment/filter',
+			component:commentTypeFilter
 		}]
   }]
 })

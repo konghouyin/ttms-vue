@@ -27,6 +27,9 @@
 				        },{
 							title: "用户修改",
 							link: "/admin/user/modify"
+						},{
+							title:"添加用户",
+							link: "/admin/user/add"
 						}
 				      ]
 				    },
@@ -34,8 +37,11 @@
 				      title: "评论管理",
 				      son: [{
 				          title: "评论查询",
-				          link: ""
-				        }
+				          link: "/admin/comment/show",
+				        },{
+							title: "举报类型选择",
+							link:"/admin/comment/filter",
+						}
 				      ]},]
 			}
 			},
