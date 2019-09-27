@@ -2,14 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import ManagerTop from '@/components/Managertop'
 import ManagerMain from '@/components/ManagerMain'
-import Hello from '@/components/HelloWorld'
-import manager from '@/components/manager'
-import tableplay from '@/components/ManagerTablePlay'
-import formplay from '@/components/ManagerFormPlay'
-import mtable from '@/components/ManagerTable'
-import mtable2 from '@/components/ManagerFormPlay'
+import mtable from '@/components/ManagerPlayQuery'
+import mtable2 from '@/components/ManagerPlayAdd'
 import mPlayChange from '@/components/ManagerPlayChange'
-import mCinema from '@/components/ManagerCinema'
+import mCinema from '@/components/ManagerCinemaQuery'
 import mCinemaAdd from '@/components/ManagerCinemaAdd'
 import mCinemaChange from '@/components/ManagerCinemaChange'
 import mPlanQuery from '@/components/ManagerPlanQuery'
@@ -18,6 +14,7 @@ import finance from '@/components/FinanceMain'
 import log from '@/components/log'
 import login from '@/components/login'
 import logon from '@/components/logon'
+import film from '@/components/film'
 
 import fPage from '@/components/UserfPage'
 import user from '@/components/UserMain'
@@ -34,6 +31,10 @@ Vue.use(Router)
 
 export default new Router({
   routes: [{
+    path: '/film',
+    component: film,
+  },
+    {
       path: '/manager',
       component: ManagerMain,
       children: [{
