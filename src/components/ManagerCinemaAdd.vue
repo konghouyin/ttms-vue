@@ -41,7 +41,7 @@
 <script>
   export default {
     data() {
-      return {
+      return {        
         ifshow:false,
         num: [],
         imgsrc: [require('@/assets/set.png'), require('@/assets/none.png'), require('@/assets/stop.png')],

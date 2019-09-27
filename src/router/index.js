@@ -14,11 +14,16 @@ import finance from '@/components/FinanceMain'
 import log from '@/components/log'
 import login from '@/components/login'
 import logon from '@/components/logon'
+import film from '@/components/film'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
+    path: '/film',
+    component: film,
+  },
+    {
       path: '/manager',
       component: ManagerMain,
       children: [{
