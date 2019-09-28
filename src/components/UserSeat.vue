@@ -1,5 +1,5 @@
 <template>
-    <div class="ust-body" style="width: 100%;">
+    <div class="ust-body">
 
       <div class="ub-l">
         <div style="display: flex; width: 100%; justify-content:center; height: 400px; align-items:center; margin-bottom: 20px ;margin-top: 80px;">
@@ -8,8 +8,6 @@
           </div>
         </div>
       </div>
-
-
 
       <div class="ub-r">
         <div class="ub-r-b">
@@ -46,100 +44,100 @@
 </template>
 
 <script>
- export default {
-    data() {
-      return {
-        movieData:{
-          m_name:'李仁港',
-          type:'冒险,动作,爱情',
-          version:'国语2D',
-          time:'125分钟',
-          start_time:'今天 9月26 22:35',
-          price:'30',
-          studio :'3号厅',
-        },
+export default {
+  data () {
+    return {
+      movieData: {
+        m_name: '李仁港',
+        type: '冒险,动作,爱情',
+        version: '国语2D',
+        time: '125分钟',
+        start_time: '今天 9月26 22:35',
+        price: '30',
+        studio: '3号厅'
+      },
 
-        num: [],
-        imgsrc: [require('@/assets/set.png'), require('@/assets/none.png'), require('@/assets/stop.png')],
-        ruleForm: {
-          name: '',
-          row: 20,
-          col: 30,
-          status: true
+      num: [],
+      imgsrc: [require('@/assets/set.png'), require('@/assets/none.png'), require('@/assets/stop.png')],
+      ruleForm: {
+        name: '',
+        row: 20,
+        col: 30,
+        status: true
+      },
+      rules: {
+        name: [{
+          required: true,
+          message: '请输入影厅名称',
+          trigger: 'blur'
         },
-        rules: {
-          name: [{
-              required: true,
-              message: '请输入影厅名称',
-              trigger: 'blur'
-            },
-            {
-              min: 1,
-              max: 10,
-              message: '长度在 1 到 10 个字符',
-              trigger: 'blur'
-            }
-          ]
+        {
+          min: 1,
+          max: 10,
+          message: '长度在 1 到 10 个字符',
+          trigger: 'blur'
         }
-      }
-    },
-    mounted() {
-      this.num = new Array(this.ruleForm.col * this.ruleForm.row).fill(0);
-    },
-    computed: {
-      bw: function() {
-        return parseInt(this.ruleForm.col) * 22 + 'px'
-      },
-      bh: function() {
-        return parseInt(this.ruleForm.row) * 18.2 + 'px'
-      }
-    },
-    methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      },
-      change(index) {
-        if(this.value2){
-          if(this.num[index]!=2){
-            this.num[index] = 2
-          }else{
-            this.num[index] = 0
-          }
-        }else{
-          if(this.num[index]!=1){
-            this.num[index] = 1
-          }else{
-            this.num[index] = 0
-          }
-        }
-        this.num = [...this.num]
-      }
-    },
-    watch: {
-      'ruleForm.row': {
-        handler: function(val, oldVal) {
-          this.num = new Array(this.ruleForm.col * this.ruleForm.row).fill(0);
-        },
-        deep: true
-      },
-      'ruleForm.col': {
-        handler: function(val, oldVal) {
-          this.num = new Array(this.ruleForm.col * this.ruleForm.row).fill(0);
-        },
-        deep: true
+        ]
       }
     }
+  },
+  mounted () {
+    this.num = new Array(this.ruleForm.col * this.ruleForm.row).fill(0)
+  },
+  computed: {
+    bw: function () {
+      return parseInt(this.ruleForm.col) * 22 + 'px'
+    },
+    bh: function () {
+      return parseInt(this.ruleForm.row) * 18.2 + 'px'
+    }
+  },
+  methods: {
+    submitForm (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!')
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    resetForm (formName) {
+      this.$refs[formName].resetFields()
+    },
+    change (index) {
+      if (this.value2) {
+        if (this.num[index] != 2) {
+          this.num[index] = 2
+        } else {
+          this.num[index] = 0
+        }
+      } else {
+        if (this.num[index] != 1) {
+          this.num[index] = 1
+        } else {
+          this.num[index] = 0
+        }
+      }
+      this.num = [...this.num]
+    }
+  },
+  watch: {
+    'ruleForm.row': {
+      handler: function (val, oldVal) {
+        this.num = new Array(this.ruleForm.col * this.ruleForm.row).fill(0)
+      },
+      deep: true
+    },
+    'ruleForm.col': {
+      handler: function (val, oldVal) {
+        this.num = new Array(this.ruleForm.col * this.ruleForm.row).fill(0)
+      },
+      deep: true
+    }
   }
+}
 </script>
 
 <style scoped>
@@ -207,7 +205,6 @@
 .ub-r-b-ob-2{
   display: flex;
   flex-direction: column;
-
 
 }
 

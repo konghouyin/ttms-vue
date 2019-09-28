@@ -1,6 +1,7 @@
 <template>
   <div>
     <div style="width: 100%; height: 81px; position: fixed; top: 0; background: rgb(255,255,255); z-index: 20;"></div>
+    <top></top>
     <div class="banner">
       <div class="faimg">
         <div class="timg">
@@ -108,6 +109,7 @@
   import fImage from './filmRecommend.vue'
   import pImage from './filmPerson.vue'
   import fComment from './filmComment.vue'
+  import top from './UserTopTest'
   export default {
     data() {
       return {
@@ -142,12 +144,13 @@
         psrc4: 'https://p0.meituan.net/movie/db977983f55ca4eb9af6e383e1f7c8071223335.jpg@126w_126h_1e_1c',
         psrc5: 'https://p0.meituan.net/movie/39e304e30fe560ec867a2ae8feed8ab6925188.jpg@126w_126h_1e_1c',
         text: '聪明可爱的小Q在训练师悉心照料和训练过程中成长为一只合格的导盲犬，并遇到了主人李宝庭（任达华 饰）——中年失明、孤僻又坏脾气的天才糕点师。他们共同生活的日子里，小Q逐渐融化并走入了宝庭的心里，温情的陪伴令处于低谷期的宝庭有了新生活，一人一犬，深深的羁绊，他们谁也无法再失去彼此'
-      };
+      }
     },
     components: {
       fImage,
       pImage,
-      fComment
+      fComment,
+      top
     },
     mounted(){
       eventBus.$on('bjevent',()=>{
