@@ -1,11 +1,5 @@
 <template>
-  <div class="modify_body" style="overflow: hidden;">
-    <div style="overflow: hidden;margin-top: 20px;">
-      <el-input placeholder="请输入人员编号" v-model="input3" class="input-with-select" style="width: 190px;float: left; margin-left: 40px;">
-        <el-button slot="append" icon="el-icon-refresh"></el-button>
-      </el-input>
-      <el-button type="primary" round style="float: right; margin-right: 40px;" @click="red()">重新选择</el-button>
-    </div>
+  <div class="add_body" style="overflow: hidden;">
     <div class="body_top">
       <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="用户名" prop="username">
@@ -36,16 +30,15 @@
     data() {
       var checkemail = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('请输入邮箱或手机号码'))
+          callback(new Error('请输入邮箱或手机号码'));
         } else {
           // if (this.ruleForm.checkPass !== '') {
           //   this.$refs.ruleForm.validateField('checkPass');
           // }
-          callback()
+          callback();
         }
-      }
+      };
       return {
-        input3:'',
         ruleForm: {
           username: '',
           pass: '',
@@ -92,21 +85,18 @@
       }
     },
     methods: {
-      red() {
-        window.location = '#/manager/user/show'
-      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!')
+            alert('submit!');
           } else {
-            console.log('error submit!!')
-            return false
+            console.log('error submit!!');
+            return false;
           }
-        })
+        });
       },
       resetForm(formName) {
-        this.$refs[formName].resetFields()
+        this.$refs[formName].resetFields();
       }
     }
   }
@@ -121,7 +111,7 @@
     margin-top: 20px;
   }
 
-  .modify_body {
-    width: 100%;
+  .add_body {
+    width: 100%
   }
 </style>

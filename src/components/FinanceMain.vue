@@ -162,6 +162,7 @@
           title: {
             text: '日期'
           },
+
           type: 'datetime',
           dateTimeLabelFormats: { // don't display the dummy year
             month: '%m月%d日',
@@ -175,7 +176,6 @@
           borderWidth: 0
         },
         plotOptions: {
-
         		series: {
         			marker: {
         				enabled: true
