@@ -1,8 +1,9 @@
 <template>
   <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" style="margin-top: 10px;">
+    <slot></slot>
     <el-form-item label="URL地址" prop="url">
       <el-input v-model="ruleForm.url" style="width: 450px; float: left;"></el-input>
-      <el-button type="success" >解析</el-button>
+      <el-button type="success">解析</el-button>
     </el-form-item>
     <el-form-item label="电影名称" prop="name" style="display: inline-block;">
       <el-input v-model="ruleForm.name" style="width: 230px; float: left;"></el-input>
@@ -31,9 +32,18 @@
     <el-form-item label="推广链接" prop="link">
       <el-input v-model="ruleForm.link" style="width: 570px; float: left;"></el-input>
     </el-form-item>
-    <el-form-item>
+    <el-form-item label="状态" prop="status" style="display: inline-block; ">
+      <el-select v-model="ruleForm.status" placeholder="请选择" >
+        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="爬取评论" prop="comment" style="display: inline-block; ">
+        <el-switch v-model="ruleForm.comment"></el-switch>
+      </el-form-item>
+    <el-form-item style="display: inline-block; ">
       <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-      <el-button type="info" @click="resetForm('ruleForm')">重置</el-button>
+      <el-button type="info" @click="resetForm('ruleForm')" style="margin-right: 35px;">重置</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -41,6 +51,19 @@
   export default {
     data() {
       return {
+        options: [{
+            value: '正在热映',
+            label: '正在热映'
+          },
+          {
+            value: '即将上线',
+            label: '即将上线'
+          },
+          {
+            value: '已下线',
+            label: '已下线'
+          }
+        ],
         ruleForm: {
           url: '',
           name: '',
@@ -51,22 +74,38 @@
           country: '',
           actor: '',
           img: '',
-          link: ''
+          link: '',
+          status: '',
+          comment: true
         },
         rules: {
-          url: [
-            { required: true, message: '请输入影片的豆瓣地址',trigger: 'blur'}
+          url: [{
+            required: true,
+            message: '请输入影片的豆瓣地址',
+            trigger: 'blur'
+          }],
+          name: [{
+              required: true,
+              message: '请输入影片名称',
+              trigger: 'blur'
+            },
+            {
+              min: 1,
+              max: 10,
+              message: '长度在 1 到 10 个字符',
+              trigger: 'blur'
+            }
           ],
-          name: [
-            { required: true, message: '请输入影片名称', trigger: 'blur' },
-            { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
-          ],
-          length: [
-            { required: true, message: '请输入影片时长',trigger: 'blur'}
-          ],
-          img: [
-            { required: true, message: '请输入海报 `地址',trigger: 'blur'}
-          ]
+          length: [{
+            required: true,
+            message: '请输入影片时长',
+            trigger: 'blur'
+          }],
+          img: [{
+            required: true,
+            message: '请输入海报 `地址',
+            trigger: 'blur'
+          }]
         }
       };
     },

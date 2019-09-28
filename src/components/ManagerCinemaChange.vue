@@ -1,43 +1,37 @@
 <template>
-  <div class="change">
-    <div style="margin-top: 15px;">
-      <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
-        <el-select v-model="select" slot="prepend" placeholder="请选择">
-          <el-option label="影厅编号" value="1"></el-option>
-          <el-option label="影厅名称" value="2"></el-option>
-        </el-select>
-        <el-button slot="append" icon="el-icon-search"></el-button>
-      </el-input>
+  <pdd>
+    <div class="change">
+      <el-input placeholder="请输入影厅编号" v-model="input3" class="input-with-select" style="width: 190px;float: left; margin-left: 40px;">
+          <el-button slot="append" icon="el-icon-refresh"></el-button>
+        </el-input>
+        <el-button type="primary" round style="float: right; margin-right: 40px;" @click="red()">重新选择</el-button>
     </div>
-  </div>
+  </pdd>
 </template>
 
 <script>
+  import pdd from './ManagerCinemaAdd';
   export default {
     data() {
       return {
-        input1: '',
-        input2: '',
-        input3: '',
-        select: ''
+        input3:''
       }
-    }
+    },
+    components:{
+      pdd
+    },
+    methods: {
+      red(){
+        window.location = '#/manager/cinema/query'
+      }
+    },
   }
 </script>
 
-<style>
-  .el-select .el-input {
-    width: 130px;
-  }
-
-  .input-with-select .el-input-group__prepend {
-    background-color: #fff;
-  }
-
+<style scoped>
   .change {
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
+    height: 40px;
+    margin-bottom: 15px;
   }
 </style>
