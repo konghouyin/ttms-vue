@@ -24,6 +24,17 @@ import commentShow from '@/components/Comment_show'
 import videoPlay from '@/components/Video_Play'
 import commentTypeFilter from '@/components/CommentType_filter'
 
+import fPage from '@/components/UserfPage'
+import user from '@/components/UserMain'
+import dmovie from'@/components/dmovie'
+import Smovie from'@/components/UserSmovie'
+import UserPifn from'@/components/UserPifn'
+import UserSeat from'@/components/UserSeat'
+import UserCpn from '@/components/UserCpn'
+import UserOrder from '@/components/UserOrder'
+
+import UserTopTest from'@/components/UserTopTest'
+
 Vue.use(Router)
 
 export default new Router({
@@ -93,8 +104,63 @@ export default new Router({
       },
       {
         path: 'logon',
-        component: logon
-      }
-    ]
-  }]
+        component: logon,
+      }],
+    },
+
+    {
+      path:'/toptest',
+      component: UserTopTest,
+    },
+    {
+      path:'/user',
+      component: user,
+      children: [
+        {
+          path: '',
+          component: fPage,
+        },
+        {
+          path: 'dmovie',
+          component: dmovie,
+        },{
+          path: 'page',
+          component: fPage,
+        },{
+          path: 'smovie',
+          component: Smovie,
+        },
+          {
+            path: 'pifn',
+            component: UserPifn,
+          },
+          {
+            path: 'seat',
+            component: UserSeat,
+          },
+          {
+            path: 'cpn',
+            component: UserCpn,
+            children:[{
+              path: '',
+              component: UserOrder,
+              },
+              {
+              path: 'order',
+              component: UserOrder,
+              },
+              {
+              path: 'shiyan',
+              component: UserOrder,
+              }
+            ]
+          }
+        ],
+
+    }/* ,
+    {
+        path: '/dmovie',
+        component: dmovie,
+    } */]
+
 })

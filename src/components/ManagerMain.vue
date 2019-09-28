@@ -109,7 +109,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .manager-main-body {
     width: 100%;
     display: flex;
