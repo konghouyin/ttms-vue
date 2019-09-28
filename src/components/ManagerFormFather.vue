@@ -2,7 +2,6 @@
   <el-submenu :index="index">
 <template slot="title">{{title}}</template>
     <el-menu-item-group>
-      <template slot="title" style="padding: 0;"></template>
       <div class="child">
         <router-link :to="item.link" tag="el-menu-item" v-for="(item,sonindex) in son" :index="index+sonindex">
           <i class="el-icon-arrow-right manager-icon" style="font-size: 12px;"></i>{{item.title}}</router-link>
@@ -41,6 +40,6 @@
   }
 
   .child {
-    background-color: #eee;
+    background-color: #FFFFFF;
   }
 </style>
