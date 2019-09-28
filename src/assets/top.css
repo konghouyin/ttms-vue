@@ -30,3 +30,7 @@ body {
 #lar-star .el-icon-star-off{
   font-size: 30px !important;
 }
+  
+.el-menu-item-group__title{
+  padding: 0 !important;
+}
