@@ -4,13 +4,11 @@
     <div class="uo1">我的订单</div>
     <div class="uo-o">
       <div class="uo-o-t">
-
       </div>
       <div class="uo-o-b">
         <div class="uo-o-b-t">
           <img src="https://p0.meituan.net/movie/c5975d98fc484027ff55d813ab3b2daa427032.jpg@66w_91h_1e_1c" class="uoimg">
           </img>
-
           <div class="uo-o-b-t-2">
             <h3 class="uo-o-b-t-2-o">{{movieData.name}}</h3>
             <div class="uo-o-b-t-2-o">{{movieData.position}}</div>
@@ -23,34 +21,32 @@
             待支付
           </div>
           <div class="uo-o-b-t-5">
-            <el-button type="danger" round>危险按钮</el-button>
+            <el-button type="danger" round>去支付</el-button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-
-
 </template>
 
 <script>
-  export default {
-     data() {
-       return {
-         movieData:{
-           m_name:'李仁港',
-           type:'冒险,动作,爱情',
-           version:'国语2D',
-           time:'125分钟',
-           start_time:'今天 9月26 22:35',
-           price:'30',
-           studio :'3号厅',
-           position:'5号激光厅（冠名招商中） 4排9座',
-         },
-        }
+export default {
+  data () {
+    return {
+      movieData: {
+        m_name: '李仁港',
+        type: '冒险,动作,爱情',
+        version: '国语2D',
+        time: '125分钟',
+        start_time: '今天 9月26 22:35',
+        price: '30',
+        studio: '3号厅',
+        position: '5号激光厅（冠名招商中） 4排9座'
       }
-     }
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -63,8 +59,9 @@
   }
 
   .uo1{
+    font-size: 20px;
+    padding: 20px;
     width: 940px;
-    height: 70px;
     text-align: left;
     border-bottom: 1px solid rgb(244,243,244);
   }
@@ -127,6 +124,5 @@
     width:110px;
     height: 110px;
   }
-
 
 </style>

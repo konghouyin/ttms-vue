@@ -23,7 +23,6 @@ import userAdd from '@/components/User_add'
 import commentShow from '@/components/Comment_show'
 import videoPlay from '@/components/Video_Play'
 import commentTypeFilter from '@/components/CommentType_filter'
-
 import fPage from '@/components/UserfPage'
 import user from '@/components/UserMain'
 import dmovie from'@/components/dmovie'
@@ -32,7 +31,6 @@ import UserPifn from'@/components/UserPifn'
 import UserSeat from'@/components/UserSeat'
 import UserCpn from '@/components/UserCpn'
 import UserOrder from '@/components/UserOrder'
-
 import UserTopTest from'@/components/UserTopTest'
 
 Vue.use(Router)
