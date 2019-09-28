@@ -41,6 +41,7 @@ import MarketTime from '@/components/MarketTime'
 import MarketSuccess from '@/components/MarketSuccess'
 import MarketRs from '@/components/MarketRs'
 import MarketRm from '@/components/MarketRm'
+import MarketSeat from '@/components/MarketSeat'
 
 Vue.use(Router)
 
@@ -101,7 +102,7 @@ export default new Router({
           component: MarketBuy
         }, {
           path: 'seat',
-          component: MarketBuy
+          component: MarketSeat
         }, {
           path: 'time',
           component: MarketTime
