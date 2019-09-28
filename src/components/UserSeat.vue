@@ -1,5 +1,5 @@
 <template>
-    <div class="ust-body">
+    <div class="ust-body" style="width: 100%;">
 
       <div class="ub-l">
         <div style="display: flex; width: 100%; justify-content:center; height: 400px; align-items:center; margin-bottom: 20px ;margin-top: 80px;">
