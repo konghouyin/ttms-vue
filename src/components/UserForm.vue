@@ -10,27 +10,27 @@
              </img>
              <div class="dmtxt" >
                 <div class="dmtxt1">
-                  导演：李仁港
+                  导演：李仁港{{movieData.dirctor}}
                 </div>
                 <div class="dmtxt2">
-                  主演：吴京,章子怡,张译,井柏然,胡歌,王景春,何琳,陈龙,刘小锋,曲尼次仁,拉旺罗布,多布杰
+                  主演：{{movieData.actor}}
                 </div>
                 <div class="dmtxt3">
-                  类型：冒险,动作,爱情
+                  类型：{{movieData.type}}
                 </div>
                 <div class="dmtxt4">
-                  制片国家/地区：中国大陆
+                  制片国家/地区：{{movieData.area}}
                 </div>
                 <div class="dmtxt5">
-                  片长：125分钟
+                  片长：{{movieData.time}}
                 </div>
                 <div class="dmtxt6">
-                  剧情介绍：1960 年，中国登山队向珠峰发起冲刺，完成了世界首次北坡登顶这一不可能的任务。15 年后，方五洲和 曲松林在气象学家徐缨的帮助下，带领李国梁、杨光等年轻队员再次挑战世界之巅。迎接他们的将是更加 严酷的现实，也是生与死的挑战......
+                  剧情介绍：{{movieData.neirong}}
                 </div>
               </div>
               <div class="uftime">
                 <div class="uftime-1">
-                  上映时间：2019-09-30 08:00
+                  上映时间：{{movieData.start_time}}
                 </div>
                 <img class="uftime-img" src="https://img.alicdn.com/bao/uploaded/i2/TB1RstSXmSD3KVjSZFKXXb10VXa_.jpg_160x160.jpg"></img>
                 <img class="uftime-img" src="https://img.alicdn.com/bao/uploaded/i2/TB1RstSXmSD3KVjSZFKXXb10VXa_.jpg_160x160.jpg"></img>
@@ -55,24 +55,28 @@
           style="width: 1050px " class="tex">
           <el-table-column
             prop="date"
-            label="日期"
+            label="放映时间"
             width="180">
           </el-table-column>
           <el-table-column
             prop="name"
-            label="姓名"
+            label="语言版本"
             width="180">
           </el-table-column>
           <el-table-column
             prop="address"
-            label="地址">
+            label="放映厅">
           </el-table-column>
           <el-table-column
             prop="address"
-            label="地址">
+            label="座位情况">
           </el-table-column>
           <el-table-column
-            label="地址" >
+            prop="address"
+            label="现价/影院价（元）">
+          </el-table-column>
+          <el-table-column
+            label="选座购票" >
              <el-button type="danger"><router-link to="/user/seat" style="color:white;text-decoration: none;">
                   选座购票</router-link></el-button>
           </el-table-column>
@@ -106,13 +110,23 @@
             date: '2016-05-03',
             name: '王小虎',
             address: '上海市普陀区金沙江路 1516 弄'
-          }]
+          }],
+
+          movieData:{
+            dirctor:'李仁港',
+            actor:'吴京,章子怡,张译,井柏然,胡歌,王景春,何琳,陈龙,刘小锋,曲尼次仁,拉旺罗布,多布杰',
+            type:'冒险,动作,爱情',
+            area:'冒险,动作,爱情',
+            time:'125分钟',
+            neirong:'1960 年，中国登山队向珠峰发起冲刺，完成了世界首次北坡登顶这一不可能的任务。15 年后，方五洲和 曲松林在气象学家徐缨的帮助下，带领李国梁、杨光等年轻队员再次挑战世界之巅。迎接他们的将是更加 严酷的现实，也是生与死的挑战......',
+            start_time:'上映时间：2019-09-30 08:00',
+          }
         }
       }
     }
 </script>
 
-<style>
+<style scoped>
   .total-xy{
   	width: 1050px;
   }

@@ -12,9 +12,9 @@
           </img>
 
           <div class="uo-o-b-t-2">
-            <h3 class="uo-o-b-t-2-o">小Q</h3>
-            <div class="uo-o-b-t-2-o">5号激光厅（冠名招商中） 4排9座</div>
-            <div class="uo-o-b-t-2-o">今天 9月26日 23:10</div>
+            <h3 class="uo-o-b-t-2-o">{{movieData.name}}</h3>
+            <div class="uo-o-b-t-2-o">{{movieData.position}}</div>
+            <div class="uo-o-b-t-2-o">{{movieData.start_time}}</div>
           </div>
           <div class="uo-o-b-t-3">
             ￥28
@@ -35,9 +35,25 @@
 </template>
 
 <script>
+  export default {
+     data() {
+       return {
+         movieData:{
+           m_name:'李仁港',
+           type:'冒险,动作,爱情',
+           version:'国语2D',
+           time:'125分钟',
+           start_time:'今天 9月26 22:35',
+           price:'30',
+           studio :'3号厅',
+           position:'5号激光厅（冠名招商中） 4排9座',
+         },
+        }
+      }
+     }
 </script>
 
-<style>
+<style scoped>
   .cuo{
     height: 796px;
     width: 940px;

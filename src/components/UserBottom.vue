@@ -104,6 +104,11 @@
     color: white;
     list-style: none;
   }
+  
+  .total-xy{
+  	width: 1050px;
+  }
+  
 
   .user_bottom{
     margin-top:55px ;

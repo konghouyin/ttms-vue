@@ -25,7 +25,7 @@
   }
 </script>
 
-<style>
+<style scoped>
 
 
   .three_box_min_min_1{

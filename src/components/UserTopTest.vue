@@ -8,7 +8,6 @@
 
   		</div>
   		<div class="ch-m-34">
-  			<!-- <span class="tsp">首页</span> -->
         <button class="tsp"><router-link to="/user">首页</router-link></button>
   		</div>
   		<div class="ch-m-34">
@@ -17,7 +16,6 @@
   		<div class="ch-m-5">
       </div>
 
-  		<!-- 可复用组建 -->
       <u-tr></u-tr>
     </div>
   </div>

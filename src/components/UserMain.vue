@@ -5,14 +5,10 @@
      <div class="copy"></div>
      <u-pt></u-pt>
 
-
       <div>
          <router-view/>
       </div>
-      
-      
     <div>
-
       <u-bottom></u-bottom>
     </div>
   </div>

@@ -34,7 +34,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .clpn {
     margin: 0 auto;
     width: 1050px;

@@ -111,7 +111,7 @@
     }
 </script>
 
-<style>
+<style scoped>
   .up-out{
       width: 945px;
       height: 600px;

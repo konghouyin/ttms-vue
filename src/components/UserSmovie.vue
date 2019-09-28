@@ -24,7 +24,7 @@
 
 </template>
 
-<script>
+<script >
   import uModl from './UseruModl.vue'
   export default {
     data() {
@@ -45,7 +45,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   #jdj{
     height: 50px;
     border-top:1px solid rgb(229,229,229);

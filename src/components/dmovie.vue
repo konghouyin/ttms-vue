@@ -1,7 +1,6 @@
 <template>
 
   <div>
-    <!-- <u-infn></u-infn> -->
     <u-form></u-form>
 
   </div>
