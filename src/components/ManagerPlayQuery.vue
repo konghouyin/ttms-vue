@@ -1,5 +1,5 @@
 <template>
-  <el-container style="max-height: 700px;">
+  <el-container style="max-height: 670px;">
     <el-main style="overflow: auto; padding: 0;">
       <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
         style="width: 100%;">
