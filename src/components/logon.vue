@@ -14,7 +14,7 @@
         <el-input type="password" v-model="logon.checkPass" placeholder="请再次输入密码" autocomplete="off" prefix-icon="el-icon-lock"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="danger" style="margin-top: 20px; margin-bottom: 8px;" @click="submitForm('logon')">
+        <el-button type="danger"  @click="submitForm('logon')">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           注册
@@ -23,6 +23,9 @@
         </el-button>
       </el-form-item>
     </el-form>
+	<div style="text-align:left;font-weight: 400;color: #666;ont: 400 14px/1.5 'Hiragino Sans GB','WenQuanYi Micro Hei',tahoma,sans-serif;">
+	  已有账号？<router-link :to="link" tag="span" style="color:red;cursor:pointer">立即登录</router-link>
+	</div>
   </div>
 </template>
 
@@ -49,6 +52,7 @@
         }
       };
       return {
+        link: '/log/login',
         logon: {
           pass: '',
           checkPass: '',
