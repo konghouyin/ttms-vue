@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import Axios from '@/axios'
   export default {
     data() {
       return {
@@ -44,15 +45,19 @@
       };
     },
     methods: {
-      submitForm(formName) {
+      submitForm (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
+            Axios.send('/login', 'post',{
+                username:this.login.user,
+                password:this.login.password
+            }).then(res => {
+              console.log(res)
+            }).catch(error => {
+              console.log('registerAxiosError', error)
+            })
           }
-        });
+        })
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
