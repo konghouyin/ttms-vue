@@ -47,82 +47,85 @@ Vue.use(Router)
 
 export default new Router({
   routes: [{
+    path: '/',
+    redirect: '/log'
+  }, {
     path: '/manager',
     component: ManagerMain,
     children: [{
-        path: 'play/query',
-        component: mtable
+      path: 'play/query',
+      component: mtable
+    }, {
+      path: 'play/add',
+      component: mtable2
+    }, {
+      path: 'play/change',
+      component: mPlayChange
+    }, {
+      path: 'cinema/query',
+      component: mCinema
+    }, {
+      path: 'cinema/add',
+      component: mCinemaAdd
+    }, {
+      path: 'cinema/change',
+      component: mCinemaChange
+    }, {
+      path: 'plan/query',
+      component: mPlanQuery
+    }, {
+      path: 'plan/add',
+      component: mPlanAdd
+    }, {
+      path: 'finance',
+      component: finance
+    }, {
+      path: 'conductor',
+      component: conductor
+    }, {
+      path: 'user/show',
+      component: userShow
+    }, {
+      path: 'user/modify',
+      component: userModify
+    }, {
+      path: 'user/add',
+      component: userAdd
+    }, {
+      path: 'comment/show',
+      component: commentShow
+    }, {
+      path: 'comment/filter',
+      component: commentTypeFilter
+    }, {
+      path: 'market',
+      component: MarketMain,
+      children: [{
+        path: 'buy',
+        component: MarketBuy
       }, {
-        path: 'play/add',
-        component: mtable2
+        path: 'seat',
+        component: MarketSeat
       }, {
-        path: 'play/change',
-        component: mPlayChange
+        path: 'time',
+        component: MarketTime
       }, {
-        path: 'cinema/query',
-        component: mCinema
+        path: 'success',
+        component: MarketSuccess
+      }]
+    },
+    {
+      path: 'market/refund',
+      name: 'MarketRefund',
+      component: MarketRefund,
+      children: [{
+        path: '',
+        component: MarketRm
       }, {
-        path: 'cinema/add',
-        component: mCinemaAdd
-      }, {
-        path: 'cinema/change',
-        component: mCinemaChange
-      }, {
-        path: 'plan/query',
-        component: mPlanQuery
-      }, {
-        path: 'plan/add',
-        component: mPlanAdd
-      }, {
-        path: 'finance',
-        component: finance
-      }, {
-        path: 'conductor',
-        component: conductor
-      }, {
-        path: 'user/show',
-        component: userShow
-      }, {
-        path: 'user/modify',
-        component: userModify
-      }, {
-        path: 'user/add',
-        component: userAdd
-      }, {
-        path: 'comment/show',
-        component: commentShow
-      }, {
-        path: 'comment/filter',
-        component: commentTypeFilter
-      }, {
-        path: 'market',
-        component: MarketMain,
-        children: [{
-          path: 'buy',
-          component: MarketBuy
-        }, {
-          path: 'seat',
-          component: MarketSeat
-        }, {
-          path: 'time',
-          component: MarketTime
-        }, {
-          path: 'success',
-          component: MarketSuccess
-        }]
-      },
-      {
-        path: 'market/refund',
-        name: 'MarketRefund',
-        component: MarketRefund,
-        children: [{
-          path: '',
-          component: MarketRm
-        }, {
-          path: 'rs',
-          component: MarketRs
-        }]
-      }
+        path: 'rs',
+        component: MarketRs
+      }]
+    }
     ]
   }, {
     path: '/film',
@@ -131,46 +134,47 @@ export default new Router({
     path: '/log',
     component: log,
     children: [{
-        path: '',
-        component: login
-      }, {
-        path: 'login',
-        component: login
-      },
-      {
-        path: 'logon',
-        component: logon
-      }
+      path: '',
+      component: login
+    }, {
+      path: 'login',
+      component: login
+    },
+    {
+      path: 'logon',
+      component: logon
+    }
     ]
   }, {
     path: '/user',
     component: user,
     children: [{
-        path: '',
-        component: fPage
-      },
-      {
-        path: 'dmovie',
-        component: dmovie
-      }, {
-        path: 'page',
-        component: fPage
-      }, {
-        path: 'smovie',
-        component: Smovie
-      },
-      {
-        path: 'pifn',
-        component: UserPifn
-      },
-      {
-        path: 'seat',
-        component: UserSeat
-      },
-      {
-        path: 'cpn',
-        component: UserCpn
-      }
+      path: '',
+      component: fPage
+    },
+    {
+      path: 'dmovie',
+      component: dmovie
+    }, {
+      path: 'page',
+      component: fPage
+    }, {
+      path: 'smovie',
+      component: Smovie
+    },
+    {
+      path: 'pifn',
+      component: UserPifn
+    },
+    {
+      path: 'seat',
+      component: UserSeat
+    },
+    {
+      path: 'cpn',
+      component: UserCpn
+    }
     ]
-  }]
+  }
+  ]
 })

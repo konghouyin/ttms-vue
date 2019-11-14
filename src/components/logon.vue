@@ -75,10 +75,18 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          Axios.send('/register?username=123&password=123', 'get').then(res => {
+          Axios.send('/register', 'post', {
+            username: this.logon.user,
+            password: this.logon.pass
+          }).then(res => {
             console.log(res)
-          }).catch(error => {
+            alert('成功')
+            this.$route.push('/user')
+          }, error => {
+            alert('用户名重复')
             console.log('registerAxiosError', error)
+          }).catch(err => {
+            throw err
           })
         }
       })
