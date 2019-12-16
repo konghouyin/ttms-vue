@@ -1,5 +1,6 @@
 <template>
   <div style="width: 100%; height: 100%; padding-top: 10px;">
+    <slot></slot>
     <el-form :inline="true" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
       style="display: flex;" :hide-required-asterisk="ht">
       <el-form-item label="影厅名称" prop="name" style="display: flex;">
@@ -14,7 +15,7 @@
     </el-form>
     <div style="display: flex; width: 100%; justify-content:center; height: 400px; align-items:center; margin-bottom: 20px ;">
       <div :style=" {width: bw,height: bh}">
-        <el-image class="img" v-for="(item,index) in num" @click="change(index)" :src="imgsrc[item]"></el-image>
+        <el-image  v-for="(item,index) in num" class="img" @click="change(index)" :src="imgsrc[item]"></el-image>
       </div>
     </div>
     <el-form :inline="true" :model="ruleForm" :rules="rules" ref="ruleForm2" class="demo-ruleForm" style="display: flex; align-items:center;">
@@ -40,7 +41,8 @@
 <script>
   export default {
     data() {
-      return {
+      return {        
+        ifshow:false,
         num: [],
         imgsrc: [require('@/assets/set.png'), require('@/assets/none.png'), require('@/assets/stop.png')],
         value2: true,

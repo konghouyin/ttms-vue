@@ -4,17 +4,16 @@
       <el-table-column prop="date" label="日期" sortable width="180" column-key="date" :filters="datecomputed"
         :filter-method="filterHandler">
       </el-table-column>
-      <el-table-column prop="number" label="编号" width="100">
-      </el-table-column>
-      <el-table-column prop="name" label="姓名"  column-key="name" :filters="namecomputed"
-        :filter-method="filterHandler" >
+      <el-table-column prop="name" label="姓名" column-key="name" :filters="namecomputed" :filter-method="filterHandler">
       </el-table-column>
       <el-table-column prop="number" label="售票数" :formatter="formatter">
       </el-table-column>
+
       <el-table-column prop="money" label="销售业绩" :formatter="formatter">
+
       </el-table-column>
     </el-table>
-    
+
     <div class="block">
       <el-autocomplete style="width:150px; margin-right: 20px; margin-top: 10px;" v-model="state" :fetch-suggestions="querySearchAsync"
         placeholder="请输入内容" @select="handleSelect"></el-autocomplete>
@@ -34,41 +33,42 @@
           date: '2016-05-02',
           number: '9527',
           name: 'ada',
-          address: '上海市普陀区金沙江路 1518 弄',
+
           money: '长的帅'
+
         }],
         restaurants: [],
-                state: '',
-                timeout:  null,
-                pickerOptions: {
-                          shortcuts: [{
-                            text: '最近一周',
-                            onClick(picker) {
-                              const end = new Date();
-                              const start = new Date();
-                              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-                              picker.$emit('pick', [start, end]);
-                            }
-                          }, {
-                            text: '最近一个月',
-                            onClick(picker) {
-                              const end = new Date();
-                              const start = new Date();
-                              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-                              picker.$emit('pick', [start, end]);
-                            }
-                          }, {
-                            text: '最近三个月',
-                            onClick(picker) {
-                              const end = new Date();
-                              const start = new Date();
-                              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-                              picker.$emit('pick', [start, end]);
-                            }
-                          }]
-                        },
-                        value1: '',
-                        value2: ''
+        state: '',
+        timeout: null,
+        pickerOptions: {
+          shortcuts: [{
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit('pick', [start, end]);
+            }
+          }]
+        },
+        value1: '',
+        value2: ''
       }
     },
     computed: {
@@ -120,12 +120,17 @@
     },
     methods: {
       loadAll() {
-              return [
-                { "value": "王小虎" },
-                { "value": "王中虎" },
-                { "value": "王大虎" }
-              ];
-            },
+        return [{
+            "value": "王小虎"
+          },
+          {
+            "value": "王中虎"
+          },
+          {
+            "value": "王大虎"
+          }
+        ];
+      },
       formatter(row, column) {
         return row.address;
       },
@@ -163,61 +168,29 @@
             minWidth: 700
           }
         },
-
-        data: {
-          csvURL: 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/analytics.csv',
-          beforeParse: function(csv) {
-            return csv.replace(/\n\n/g, '\n');
+        title: {
+          text: '销售员销售情况'
+        },
+        xAxis: {
+          title: {
+            text: '日期'
+          },
+          type: 'datetime',
+          dateTimeLabelFormats: { // don't display the dummy year
+            month: '%m月%d日',
+            year: '%b'
           }
         },
-
-        title: {
-          text: '售票员销售额'
-        },
-
-        subtitle: {
-          text: 'from:heaven theatre'
-        },
-
-        xAxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-          ]
-        },
-
-        yAxis: [{ // left y axis
+        yAxis: { // left y axis
           title: {
-            text: null
-          },
-          labels: {
-            align: 'left',
-            x: 3,
-            y: 16,
-            format: '{value:.,0f}'
-          },
-          showFirstLabel: false
-        }, { // right y axis
-          linkedTo: 0,
-          gridLineWidth: 0,
-          opposite: true,
-          title: {
-            text: null
-          },
-          labels: {
-            align: 'right',
-            x: -3,
-            y: 16,
-            format: '{value:.,0f}'
-          },
-          showFirstLabel: false
-        }],
-
+            text: '销售额'
+          }
+        },
         legend: {
           align: 'left',
           verticalAlign: 'top',
           borderWidth: 0
         },
-
         tooltip: {
           shared: true,
           crosshairs: true
@@ -226,35 +199,43 @@
         plotOptions: {
           series: {
             cursor: 'pointer',
-            point: {
-              events: {
-                click: function(e) {
-                  hs.htmlExpand(null, {
-                    pageOrigin: {
-                      x: e.pageX || e.clientX,
-                      y: e.pageY || e.clientY
-                    },
-                    headingText: this.series.name,
-                    maincontentText: Highcharts.dateFormat('%A, %b %e, %Y', this.x) + ':<br/> ' +
-                      this.y + ' sessions',
-                    width: 200
-                  });
-                }
-              }
-            },
             marker: {
               lineWidth: 1
             }
           }
         },
         series: [{
-          name: 'Tokyo',
-          data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-        }, {
-          name: 'London',
-          data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }]
-      });
+          name: '小虎',
+          data: [
+            [Date.UTC(2019, 9, 7), 3.0],
+            [Date.UTC(2019, 9, 8), 4.9],
+            [Date.UTC(2019, 9, 9), 4.5],
+            [Date.UTC(2019, 9, 10), 6.5],
+            [Date.UTC(2019, 9, 11), 8.4],
+            [Date.UTC(2019, 9, 12), 9.5],
+            [Date.UTC(2019, 9, 13), 12.2],
+            [Date.UTC(2019, 9, 14), 8.5],
+            [Date.UTC(2019, 9, 15), 7.3],
+            [Date.UTC(2019, 9, 16), 5.3],
+            [Date.UTC(2019, 9, 17), 6.9],
+            [Date.UTC(2019, 9, 18), 7.9]
+          ]
+        }],
+        responsive: {
+          rules: [{
+            condition: {
+              maxWidth: 1000
+            },
+            chartOptions: {
+              legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+              }
+            }
+          }]
+        }
+      })
     }
   }
 </script>

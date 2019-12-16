@@ -1,9 +1,36 @@
-
-*{
+* {
   padding: 0;
   margin: 0;
 }
 
-body{
+body {
   min-width: 900px;
+}
+
+#star-show .el-rate__icon {
+  margin-right: 0 !important;
+}
+
+#star-show1 .el-rate__icon {
+  margin-right: 0 !important;
+}
+
+#menu .el-menu-item {
+  font-size: 18px !important;
+  height: 49.6px;
+  color: #000000;
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 30px;
+}
+
+#lar-star .el-icon-star-on{
+  font-size: 30px !important;
+}
+#lar-star .el-icon-star-off{
+  font-size: 30px !important;
+}
+  
+.el-menu-item-group__title{
+  padding: 0 !important;
 }
