@@ -33,43 +33,45 @@
 </template>
 
 <script>
-    import Axios from '@/axios'
-    export default {
-        data() {
-            return {
-                link: '/log/logon',
-                login: {
-                    user: '',
-                    password: ''
-                }
-            }
-        },
-        methods: {
-            submitForm(formName) {
-                this.$refs[formName].validate((valid) => {
-                    if (valid) {
-                        Axios.send('/login', 'post', {
-                            username: this.login.user,
-                            password: this.login.password
-                        }).then(res => {
-                            console.log(res)
-                            this.$router.push('/user')
-                        }, error => {
-                            console.log('registerAxiosError', error)
-                        }).catch(err => {
-                            throw err
-                        })
-                    } else {
-                        console.log('error submit!!')
-                        return false
-                    }
-                })
-            },
-            resetForm(formName) {
-                this.$refs[formName].resetFields()
-            }
-        }
+
+import Axios from '@/axios'
+export default {
+  data () {
+    return {
+      link: '/log/logon',
+      login: {
+        user: '',
+        password: ''
+      }
     }
+  },
+  methods: {
+    submitForm (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          Axios.send('/login', 'post', {
+            username: this.login.user,
+            password: this.login.password
+          }).then(res => {
+            console.log(res)
+            this.$router.push('/user')
+          }, error => {
+            console.log('registerAxiosError', error)
+          }).catch(err => {
+            throw err
+          })
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    resetForm (formName) {
+      this.$refs[formName].resetFields()
+    }
+  }
+
+}
 </script>
 
 <style scoped>
