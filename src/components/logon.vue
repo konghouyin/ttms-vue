@@ -80,8 +80,7 @@ export default {
             password: this.logon.pass
           }).then(res => {
             console.log(res)
-            alert('成功')
-            this.$route.push('/user')
+            this.$router.push('/user')
           }, error => {
             alert('用户名重复')
             console.log('registerAxiosError', error)
