@@ -1,5 +1,5 @@
 <template>
-  <el-container style="max-height: 700px;">
+  <el-container style="max-height: 670px;">
     <el-main style="overflow: auto; padding: 0;">
       <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
         style="width: 100%;">
@@ -16,7 +16,7 @@
           <div slot="header" slot-scope="scope" style="width: 100%; height: 100%; margin: 0; padding: 0; display: flex;align-items:center">
             <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
           </div>
-          <div slot-scope="scope" style="display: flex;align-items:center;justify-content:space-around">
+          <div slot-scope="scope" style="display: flex;align-items:center;justify-content:space-around;">
             <el-button size="small" type="primary" icon="el-icon-edit" circle @click="handleEdit(scope.$index, scope.row)"></el-button>
             <el-button size="small" type="danger"  icon="el-icon-delete" circle @click="handleDelete(scope.$index, scope.row)"></el-button>
           </div>
