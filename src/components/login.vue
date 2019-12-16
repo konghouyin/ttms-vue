@@ -25,7 +25,6 @@
         </el-button>
       </el-form-item>
     </el-form>
-
     <div style="text-align:left;font-weight: 400;color: #666;ont: 400 14px/1.5 'Hiragino Sans GB','WenQuanYi Micro Hei',tahoma,sans-serif;">
       还没有账号？<router-link :to="link" tag="span" style="color:red;cursor:pointer">立即注册</router-link>
     </div>
@@ -40,7 +39,7 @@
         login: {
           user: '',
           password: '',
-        }
+        }0.
       };
     },
     methods: {

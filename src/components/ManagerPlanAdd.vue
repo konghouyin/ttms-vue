@@ -25,8 +25,14 @@
         </el-form-item>
       </el-col>
     </el-form-item>
+    <el-form-item label="排片次数" style="display: inline-block; float: left">
+      <el-input-number v-model="num" controls-position="right" :min="1" ></el-input-number>
+    </el-form-item>
+    <el-form-item label="排片间隔(min)" style="display: inline-block;">
+      <el-input-number v-model="long" controls-position="right" :min="10" ></el-input-number>
+    </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+      <el-button type="primary" @click="submitForm('ruleForm')">立即添加</el-button>
       <el-button @click="resetForm('ruleForm')">重置</el-button>
     </el-form-item>
   </el-form>
@@ -36,14 +42,16 @@
   export default {
     data() {
       return {
+        num:1,
+        long:15,
         options: [{
           value: '选项1',
           label: '罗小黑战记'
         }],
-		options2: [{
-		  value: '选项1',
-		  label: '1号厅'
-		}],
+        options2: [{
+          value: '选项1',
+          label: '1号厅'
+        }],
         value: '',
         ruleForm: {
           name: '',
@@ -57,17 +65,15 @@
         },
         rules: {
           pname: [{
-              required: true,
-              message: '请选择影片名称',
-              trigger: 'change'
-            }
-          ],
+            required: true,
+            message: '请选择影片名称',
+            trigger: 'change'
+          }],
           name: [{
-              required: true,
-              message: '请选择影厅名称',
-              trigger: 'change'
-            }
-          ],
+            required: true,
+            message: '请选择影厅名称',
+            trigger: 'change'
+          }],
           date1: [{
             type: 'date',
             required: true,
