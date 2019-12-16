@@ -1,0 +1,291 @@
+[33mcommit 625a33f8841676a05224022fd9ce77362e5aa051[m[33m ([m[1;36mHEAD -> [m[1;32mlei[m[33m)[m
+Author: leixy111 <1696380557@qq.com>
+Date:   Wed Nov 6 12:15:07 2019 +0800
+
+    anyebuzhidao
+
+[33mcommit 1a03d0dd0f86bf4ff04788718995c946224cc2a9[m[33m ([m[1;31morigin/lei[m[33m)[m
+Author: leixy111 <1696380557@qq.com>
+Date:   Sat Sep 28 23:52:53 2019 +0800
+
+    hehe
+
+[33mcommit 5d560a6740e75a2483b2481feb091bb85ad5dc86[m
+Merge: bb1eca5 9ced686
+Author: konghouyin <1360234119@qq.com>
+Date:   Sat Sep 28 21:17:52 2019 +0800
+
+    merge zhou update
+
+[33mcommit bb1eca5f674a8b232bcc7128d2f82972c7945016[m
+Author: konghouyin <1360234119@qq.com>
+Date:   Sat Sep 28 21:13:34 2019 +0800
+
+    change jian
+
+[33mcommit d80d922c82666eb16a0d67881e49683a449af31a[m
+Merge: e1e2953 e6ea0fb
+Author: konghouyin <1360234119@qq.com>
+Date:   Sat Sep 28 20:46:06 2019 +0800
+
+    merge lei
+
+[33mcommit 9ced68641513182081793ee4d71ecfc322d4014a[m
+Author: zxiyi <1424244330@qq.com>
+Date:   Sat Sep 28 19:53:45 2019 +0800
+
+    manager fixed
+
+[33mcommit e1e29532fa604b7d33b0092f8ec265d14f81d4e3[m
+Author: konghouyin <1360234119@qq.com>
+Date:   Sat Sep 28 18:36:32 2019 +0800
+
+    merge jian
+
+[33mcommit cfd765922b99c1df8d9d5d98970d832d48f93256[m
+Merge: 904b523 d719452
+Author: konghouyin <1360234119@qq.com>
+Date:   Sat Sep 28 18:18:39 2019 +0800
+
+    Merge branch 'user' of github.com:konghouyin/ttms-vue into fan
+
+[33mcommit 904b52337c5c286227c99a387cdffa019981e84d[m
+Author: konghouyin <1360234119@qq.com>
+Date:   Sat Sep 28 18:18:15 2019 +0800
+
+    后台管理页面完成
+
+[33mcommit 4c84c3617b123b8589d117cab368994ae1b6f6ed[m
+Author: zxiyi <1424244330@qq.com>
+Date:   Sat Sep 28 17:59:03 2019 +0800
+
+    manager fixed
+
+[33mcommit d71945203fe3d46e790fdbb3eaf6506689ab5b06[m[33m ([m[1;31morigin/user[m[33m)[m
+Merge: af84f4e 3399124
+Author: jiange702 <1026546351@qq.com>
+Date:   Sat Sep 28 17:56:34 2019 +0800
+
+    mergingfan
+
+[33mcommit 33991242a7e1ffb06ed7cc34e481a54d77028f7c[m
+Merge: 158b713 fd58017
+Author: konghouyin <1360234119@qq.com>
+Date:   Sat Sep 28 17:35:46 2019 +0800
+
+    merge zhang
+
+[33mcommit 158b7138f359178a3e3c4897d30accf7a7fc66dc[m
+Merge: ed31201 d46dd44
+Author: konghouyin <1360234119@qq.com>
+Date:   Sat Sep 28 16:22:59 2019 +0800
+
+    merge wang
+
+[33mcommit ed312012ab3f37f28f0fae4f4f513f77e3472e24[m
+Merge: 74385fa 51fd3cb
+Author: konghouyin <1360234119@qq.com>
+Date:   Sat Sep 28 16:18:21 2019 +0800
+
+    merage zhou
+
+[33mcommit af84f4e2be4e9be20607f5c6a8f664e8dca5db89[m
+Author: jiange702 <1026546351@qq.com>
+Date:   Sat Sep 28 13:37:02 2019 +0800
+
+    jiange2.0
+
+[33mcommit e6ea0fb41df9a3644e3d5a1b945c141ae24c1e08[m
+Merge: eb7d1b1 d894e4c
+Author: leixy <1696380557@qq.com>
+Date:   Sat Sep 28 10:54:29 2019 +0800
+
+    haha
+
+[33mcommit fd58017888b8335f78f80140747f7f72816ccc1a[m[33m ([m[1;31morigin/wolf[m[33m)[m
+Author: 0072qq <2813346730@qq.com>
+Date:   Sat Sep 28 00:11:53 2019 +0800
+
+    zx123
+
+[33mcommit b513ba49bf8bde6a9f22e6a2595f16ba7fda2632[m
+Merge: bfb866a 51fd3cb
+Author: jiange702 <1026546351@qq.com>
+Date:   Fri Sep 27 23:36:05 2019 +0800
+
+    Merge branch 'zhou' of https://github.com/konghouyin/ttms-vue into user
+
+[33mcommit bfb866ac97935cdbe57fcea60a65b316eac8969b[m
+Author: jiange702 <1026546351@qq.com>
+Date:   Fri Sep 27 23:31:06 2019 +0800
+
+    jiange1.0
+
+[33mcommit 51fd3cb8546695be63f04d64717077d7e60a0035[m
+Author: zxiyi <1424244330@qq.com>
+Date:   Fri Sep 27 23:26:12 2019 +0800
+
+    manager7.0
+
+[33mcommit d46dd441216fa71b08dd802f1e48bd88e62363b3[m[33m ([m[1;31morigin/wang[m[33m)[m
+Author: bayijianjun <1348955855@qq.com>
+Date:   Fri Sep 27 19:31:06 2019 +0800
+
+    QAQ
+
+[33mcommit 74385fa81166ea9cbb8eb8bf0f6e47a8bb00f741[m
+Merge: 6716131 daf4a0b
+Author: konghouyin <1360234119@qq.com>
+Date:   Thu Sep 26 23:32:11 2019 +0800
+
+    完成可视化图表
+
+[33mcommit 6059ab2c8809cbed79f55a95029aa33629e48f57[m
+Author: zxiyi <1424244330@qq.com>
+Date:   Thu Sep 26 21:39:03 2019 +0800
+
+    manager6.0
+
+[33mcommit 6716131c8c7768dc16812a0ef91f706c00c8bb75[m
+Author: konghouyin <1360234119@qq.com>
+Date:   Thu Sep 26 21:35:08 2019 +0800
+
+    add user
+
+[33mcommit daf4a0b0e8706a7fedd5a12de0e723660b8dc427[m
+Author: bayijianjun <1348955855@qq.com>
+Date:   Thu Sep 26 21:28:47 2019 +0800
+
+    0.0
+
+[33mcommit eb7d1b1b6e28013b00839f264dba2bf3143f0bf7[m
+Author: leixy <1696380557@qq.com>
+Date:   Wed Sep 25 18:57:42 2019 +0800
+
+    lei0.0
+
+[33mcommit 65119a61386c118c22ccd1220cb3f0c9e9c8fe72[m
+Merge: 0e1dfe1 d894e4c
+Author: bayijianjun <1348955855@qq.com>
+Date:   Wed Sep 25 00:58:28 2019 +0800
+
+    wang0.1
+
+[33mcommit d894e4ca8357c4c0d7c5d4c3d4fd4d618fd3a6c6[m
+Author: zxiyi <1424244330@qq.com>
+Date:   Wed Sep 25 00:56:10 2019 +0800
+
+    manager5.0
+
+[33mcommit 0e1dfe1d104f4a427e7022433741b020ee7a474f[m
+Author: bayijianjun <1348955855@qq.com>
+Date:   Wed Sep 25 00:55:57 2019 +0800
+
+    wang0.0
+
+[33mcommit 818f5a919d1175c7e76b3845b01deedd2c11c456[m
+Author: zxiyi <1424244330@qq.com>
+Date:   Tue Sep 24 23:22:33 2019 +0800
+
+    manager4.0
+
+[33mcommit cc71235ee4805d844fabfd138f645eb903875e0b[m
+Merge: c61744b c9266b8
+Author: jiange702 <1026546351@qq.com>
+Date:   Tue Sep 24 23:01:45 2019 +0800
+
+    Merge branch 'zhou' of https://github.com/konghouyin/ttms-vue into user
+
+[33mcommit c61744bffba5d37545468bb62b919fe2714ff3fb[m
+Author: jiange702 <1026546351@qq.com>
+Date:   Tue Sep 24 23:01:35 2019 +0800
+
+    jian1
+
+[33mcommit 684aab465cc9516e5d9e91fab0824a4d29fcd3f7[m
+Author: 0072qq <2813346730@qq.com>
+Date:   Tue Sep 24 19:46:32 2019 +0800
+
+    skr
+
+[33mcommit c9266b89c679046f925a013866f2562b551b5325[m
+Author: zxiyi <1424244330@qq.com>
+Date:   Mon Sep 23 23:33:40 2019 +0800
+
+    merger4.0
+
+[33mcommit da975c9c089f37be238851a34b802c245873810f[m
+Merge: 4477cd6 917d915
+Author: 0072qq <2813346730@qq.com>
+Date:   Mon Sep 23 21:44:27 2019 +0800
+
+    pull new
+
+[33mcommit 4477cd64cacb1ebab63b313533bfe9d3183becb1[m
+Author: 0072qq <2813346730@qq.com>
+Date:   Mon Sep 23 21:41:13 2019 +0800
+
+    pull new
+
+[33mcommit 917d9150560230f7156fd3c1cf254686c38c7bd1[m
+Author: zxiyi <1424244330@qq.com>
+Date:   Mon Sep 23 21:15:12 2019 +0800
+
+    merger3.0
+
+[33mcommit ac0b58f22099b803f1654570e2d8572b5aa5260f[m
+Merge: 053a4bf eadf1ff
+Author: 0072qq <2813346730@qq.com>
+Date:   Mon Sep 23 20:05:39 2019 +0800
+
+    Merge branch 'zhou' of github.com:konghouyin/ttms-vue into wolf
+
+[33mcommit 053a4bf40709a5f4c8e90c94a3ce4010db4074de[m
+Author: 0072qq <2813346730@qq.com>
+Date:   Mon Sep 23 20:04:52 2019 +0800
+
+    xxx
+
+[33mcommit 559286e89a373c185fd26d9f254667eca6207099[m
+Merge: eadf1ff 416cbb3
+Author: zxiyi <1424244330@qq.com>
+Date:   Mon Sep 23 18:02:06 2019 +0800
+
+    merger wang
+
+[33mcommit eadf1fff6b8b132fe933be82f607820a242f8869[m
+Author: zxiyi <1424244330@qq.com>
+Date:   Mon Sep 23 17:52:05 2019 +0800
+
+    manage2.0
+
+[33mcommit 416cbb38de78bc88ee9b12edd9d220221f4d90bb[m
+Author: bayijianjun <1348955855@qq.com>
+Date:   Mon Sep 23 17:43:35 2019 +0800
+
+    财务主题框架搭建
+
+[33mcommit f8df5d8eb040606372b54c125bdc5bfdc6e56211[m
+Merge: 98271d6 9e4a888
+Author: bayijianjun <1348955855@qq.com>
+Date:   Mon Sep 23 16:45:28 2019 +0800
+
+    Merge branch 'zhou' of https://github.com/konghouyin/ttms-vue into wang
+
+[33mcommit 98271d6e7236a6e80ae56b4505bdb4d084ba0ca2[m
+Author: bayijianjun <1348955855@qq.com>
+Date:   Mon Sep 23 16:45:11 2019 +0800
+
+    new wang
+
+[33mcommit 9e4a888b8501045f2f23b03afd53328ad07a784e[m
+Author: zxiyi <1424244330@qq.com>
+Date:   Thu Sep 19 17:31:21 2019 +0800
+
+    Manager1.0
+
+[33mcommit 4fd4a8791a869cf527be55aabce689cee4651372[m
+Author: konghouyin <1360234119@qq.com>
+Date:   Thu Sep 12 22:51:51 2019 +0800
+
+    create
