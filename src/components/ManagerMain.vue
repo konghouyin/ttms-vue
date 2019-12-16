@@ -70,7 +70,8 @@ export default {
         {
           title: '员工业绩',
           link: '/manager/conductor'
-        }]
+        }
+        ]
       },
       {
         title: '人员管理',
@@ -84,7 +85,8 @@ export default {
         }, {
           title: '人员修改',
           link: '/manager/user/modify'
-        }]
+        }
+        ]
       }, {
         title: '评论管理',
         son: [{
@@ -94,7 +96,19 @@ export default {
         {
           title: '评论举报',
           link: '/manager/comment/show'
-        }]
+        }
+        ]
+      }, {
+        title: '销售管理',
+        son: [{
+          title: '售票',
+          link: '/manager/market/buy'
+        },
+        {
+          title: '退票',
+          link: '/manager/market/refund'
+        }
+        ]
       }
       ]
     }
@@ -109,7 +123,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .manager-main-body {
     width: 100%;
     display: flex;

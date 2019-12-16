@@ -40,6 +40,6 @@
   }
 
   .child {
-    background-color: #FFFFFF;
+    background-color: #eee;
   }
 </style>

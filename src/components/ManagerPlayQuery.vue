@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container style="max-height: 670px;">
     <el-main style="overflow: auto; padding: 0;">
       <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
         style="width: 100%;">
@@ -10,7 +10,7 @@
         <el-table-column prop="length" label="片长">
         </el-table-column>
         <el-table-column prop="status" :filters="[{ text: '正在热映', value: '正在热映' }, { text: '已下映', value: '已下映' },{ text: '即将上映', value: '即将上映' }]"
-          :filter-method="filterTag"  label="状态">
+          :filter-method="filterTag" label="状态">
         </el-table-column>
         <el-table-column align="right" style="padding: 0;" width="160px">
           <div slot="header" slot-scope="scope" style="width: 100%; height: 100%; margin: 0; padding: 0; display: flex;align-items:center">
@@ -49,8 +49,8 @@
         console.log(index, row);
       },
       filterTag(value, row) {
-              return row.status === value;
-            },
+        return row.status === value;
+      },
     },
   }
 </script>

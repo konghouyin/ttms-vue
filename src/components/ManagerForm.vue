@@ -21,8 +21,7 @@
     components: {
       formfather
     },
-     created:function(){
-       console.log(22)
+     created:function(){      
         this.addlink()
      },
     methods:{
