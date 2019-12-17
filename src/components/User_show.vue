@@ -43,6 +43,7 @@
 </template>
 
 <script>
+	import Axios from '@/axios'
 	var k;
 	export default{
 		data(){
@@ -65,6 +66,20 @@
 					email: '123@mail.com',
 				}]
 			}
+		},
+		mounted(){
+			Axios.send('/PersonQuery', 'post', {
+			  
+			}).then(res => {
+				
+				
+				
+			  console.log(res)
+			}, error => {
+			  console.log('registerAxiosError', error)
+			}).catch(err => {
+			  throw err
+			})
 		},
 		components:{
 
