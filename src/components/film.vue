@@ -96,9 +96,9 @@
                     </el-dialog>
                     <el-dialog :visible.sync="bjVisible" width="490px" center>
                         <div style="height: 27.4px; padding-bottom: 10px; margin-bottom: 20px; color: #222222; font-size: 18px; border-bottom: 1px solid #eee;text-align: center;">请选择举报理由</div>
-                        <div v-for="item in reporttype">
-                            <el-radio v-for="it in item" v-model="radio" :label="it">{{it}}</el-radio><br /><br /><br />
-                        </div>
+                        
+                            <el-radio v-for="it in reporttype" v-model="radio" :label="it">{{it}}</el-radio><br /><br /><br />
+                        
                         <el-input type="textarea" :rows="4" placeholder="请输入内容" v-model="textarea2">
                         </el-input>
                         <el-button :disabled="radio===''" type="danger" style="margin-top: 20px; margin-left: 370px;"
@@ -165,12 +165,15 @@
       eventBus.$on('bjevent',()=>{
         this.bjVisible = !this.bjVisible;
       })
+	  eventBus.$on('centerDialogVisible', () => {
+	      this.centerDialogVisible = !this.centerDialogVisible;
+	  })
 	  
 	  Axios.send('/reportType/getreportType', 'get', {
 		  
 	  }).then(res => {
-	    console.log(res)
 		this.reporttype = res.obj
+	    console.log(res)
 	  }, error => {
 	    alert('评论添加失败')
 	    console.log('commentReportError', error)
@@ -195,9 +198,7 @@
 	      throw err
 	  })
 
-        eventBus.$on('bjevent', () => {
-            this.bjVisible = !this.bjVisible;
-        })
+        
     },
     methods: {
         open(title, msg) {

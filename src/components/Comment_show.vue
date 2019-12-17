@@ -49,6 +49,7 @@
 </template>
 
 <script>
+	import Axios from '@/axios'
 export default {
   data () {
     const llist =
@@ -114,6 +115,19 @@ export default {
       value1: '',
       value2: ''
     }
+  },
+  mounted() {
+  	Axios.send('/report/comment', 'get', {
+  			  
+  	}).then(res => {
+  	  console.log(res)
+		// this.typeData = res.obj
+  	}, error => {
+  	  alert('*****添加失败')
+  	  console.log('commentReportError', error)
+  	}).catch(err => {
+  	  throw err
+  	})
   },
   methods: {
     handleEdit (index, row) {
