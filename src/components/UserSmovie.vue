@@ -26,6 +26,7 @@
 
 <script >
   import uModl from './UseruModl.vue'
+  import Axios from '@/axios'
   export default {
     data() {
       return{
@@ -35,6 +36,27 @@
         'https://p0.meituan.net/movie/cddf92d0ac6a0db837a1bc488b241c42267927.jpg@464w_644h_1e_1c','https://p0.meituan.net/movie/cddf92d0ac6a0db837a1bc488b241c42267927.jpg@464w_644h_1e_1c',
         'https://p0.meituan.net/movie/cddf92d0ac6a0db837a1bc488b241c42267927.jpg@464w_644h_1e_1c','https://p0.meituan.net/movie/cddf92d0ac6a0db837a1bc488b241c42267927.jpg@464w_644h_1e_1c']
       }
+    },
+    mounted() {
+        Axios.send('/display', 'post', {}).then(res => {
+            console.log(res)
+            let list = []
+            if (res.obj.length > 4) {
+                for (var i = 0; i < 4; i++) {
+                    list.push(res.obj[i].play_pic)
+                }
+            } else {
+                res.obj.forEach(function(item) {
+                    list.push(item.play_pic)
+                })
+            }
+
+            this.formdata = list
+        }, error => {
+            console.log('displayAxiosError', error)
+        }).catch(err => {
+            throw err
+        })
     },
     components: {
       uModl,
