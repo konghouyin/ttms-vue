@@ -3,7 +3,7 @@
     <el-table ref="filterTable" :data="tableData" style="width: 100%">
       <el-table-column prop="date" label="日期" sortable width="180" column-key="date" :filters="datecomputed"
         :filter-method="filterHandler">
-      </el-table-column>
+      </el-table-column>·
       <el-table-column prop="name" label="姓名" column-key="name" :filters="namecomputed" :filter-method="filterHandler">
       </el-table-column>
       <el-table-column prop="number" label="售票数" :formatter="formatter">
