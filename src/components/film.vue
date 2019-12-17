@@ -76,9 +76,14 @@
                     <div class="mod-title mod-title2" style="margin-top: 9px; margin-bottom: 20px;">热门评论</div>
                     <button class="but" @click="centerDialogVisible = true">写短评</button>
 
+
+
                     <div style="width: 730px; display: inline-block;">
-                        <f-comment v-for="item in 10"></f-comment>
+                        <f-comment></f-comment>
                     </div>
+                    
+                    
+                    
                     <el-dialog :visible.sync="centerDialogVisible" width="550px" center>
                         <div style="padding-top: 30px;margin-bottom: 15px;color: #ffc600; text-align: center;">
                             <span v-show="mark2===0" style="font-size: 16px;">点击星星评分</span>
