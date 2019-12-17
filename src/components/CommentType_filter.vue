@@ -24,13 +24,26 @@
 </template>
 
 <script>
-
+import Axios from '@/axios'
 	export default{
 		data(){
 			return {
 				input: '',
-				typeData:['权限1','权限2','权限3','权限4','权限5']
+				typeData:[]
 			}
+		},
+		mounted() {
+			Axios.send('/reportType/getreportType', 'get', {
+					  
+			}).then(res => {
+			  console.log(res)
+				this.typeData = res.obj
+			}, error => {
+			  alert('评论添加失败')
+			  console.log('commentReportError', error)
+			}).catch(err => {
+			  throw err
+			})
 		},
 		methods:{
 			addTo(event){
@@ -38,10 +51,33 @@
 					return
 				}
 				this.typeData.push(this.input);
-				this.input="";
+				
+				Axios.send('/comment/report', 'post', {
+				  type:this.input,
+				}).then(res => {
+				  console.log(res)
+				  this.input="";
+				}, error => {
+				  alert('评论添加失败')
+				  console.log('commentAddError', error)
+				}).catch(err => {
+				  throw err
+				})
 			},
 			deleteTo(index){
 				console.log(this.typeData)
+				console.log(this.typeData[index])
+				Axios.send('/reportType/del', 'post', {
+				  name:this.typeData[index],
+				}).then(res => {
+				  console.log(res)
+				  this.input="";
+				}, error => {
+				  alert('评论添加失败')
+				  console.log('commentAddError', error)
+				}).catch(err => {
+				  throw err
+				})
 				this.typeData.splice(index,1);
 				console.log(this.typeData)
 			}

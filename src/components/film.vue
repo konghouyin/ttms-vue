@@ -73,7 +73,7 @@
           <button class="but" @click="centerDialogVisible = true">写短评</button>
 
           <div style="width: 730px; display: inline-block;">
-            <f-comment v-for="item in 10"></f-comment>
+            <f-comment></f-comment>
           </div>
           <el-dialog :visible.sync="centerDialogVisible" width="550px" center>
             <div style="padding-top: 30px;margin-bottom: 15px;color: #ffc600; text-align: center;" >
@@ -90,7 +90,8 @@
           </el-dialog>
           <el-dialog :visible.sync="bjVisible" width="490px" center>
             <div style="height: 27.4px; padding-bottom: 10px; margin-bottom: 20px; color: #222222; font-size: 18px; border-bottom: 1px solid #eee;text-align: center;">请选择举报理由</div>
-              <div v-for="item in reporttype"><el-radio v-for="it in item" v-model="radio" :label="it">{{it}}</el-radio><br/><br/><br/></div>
+              
+				  <el-radio v-for="it in reporttype" v-model="radio" :label="it" class="line">{{it}}</el-radio>
             <el-input type="textarea" :rows="4" placeholder="请输入内容" v-model="textarea2">
             </el-input>
             <el-button :disabled="radio===''" type="danger" style="margin-top: 20px; margin-left: 370px;"  @click="open('举报成功','正在等待管理员审核') ,bjVisible = false">确定</el-button>
@@ -105,6 +106,7 @@
 </template>
 
 <script>
+	import Axios from '@/axios'
   import eventBus from '../eventBus.js'
   import fImage from './filmRecommend.vue'
   import pImage from './filmPerson.vue'
@@ -115,10 +117,10 @@
       return {
         radio:'',
         reporttype:[
-          ['违法违规','色情','低俗','赌博诈骗'],
-          ['人身攻击','侵犯隐私'],
-          ['垃圾广告','引战','剧透','刷屏'],
-          ['抢楼','视频不相关','青少年不良信息']
+          // '违法违规','色情','低俗','赌博诈骗',
+          // '人身攻击','侵犯隐私',
+          // '垃圾广告','引战','剧透','刷屏',
+          // '抢楼','视频不相关','青少年不良信息'
         ],
         love: false,
         rate: false,
@@ -156,22 +158,65 @@
       eventBus.$on('bjevent',()=>{
         this.bjVisible = !this.bjVisible;
       })
+	  
+	  Axios.send('/reportType/getreportType', 'get', {
+		  
+	  }).then(res => {
+	    console.log(res)
+		this.reporttype = res.obj
+	  }, error => {
+	    alert('评论添加失败')
+	    console.log('commentReportError', error)
+	  }).catch(err => {
+	    throw err
+	  })
+	  
     },
     methods: {
           open(title,msg) {
             const h = this.$createElement;
-
             this.$notify({
               title: title,
               message: h('i', { style: 'color: teal'}, msg),
               duration:1500
             });
+			if(title == '评价成功'){
+				Axios.send('/comment/add', 'post', {
+				  text:this.textarea,
+				  grade:this.mark2*2
+				}).then(res => {
+				  console.log(res)
+				  this.$router.push('/user')
+				}, error => {
+				  alert('评论添加失败')
+				  console.log('commentAddError', error)
+				}).catch(err => {
+				  throw err
+				})
+			}else{
+				Axios.send('/comment/report', 'post', {
+				  type:this.radio,
+				  msg:this.textarea2
+				}).then(res => {
+				  console.log(res)
+				  this.$router.push('/user')
+				}, error => {
+				  alert('评论添加失败')
+				  console.log('commentReportError', error)
+				}).catch(err => {
+				  throw err
+				})
+			}
+			
           }
      }
   }
 </script>
 
 <style scoped>
+	.line{
+		margin: 10px 20px;
+		}
   .but {
     outline: none;
     float: right;
