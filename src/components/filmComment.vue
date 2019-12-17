@@ -64,8 +64,7 @@
 
         methods: {
             bj(id) {
-                eventBus.$emit('bjevent')
-				console.log(id)
+                eventBus.$emit('bjevent',id)
             }
         }
     }

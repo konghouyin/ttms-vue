@@ -167,7 +167,9 @@
       top
     },
     mounted(){
-      eventBus.$on('bjevent',()=>{
+      eventBus.$on('bjevent',(id)=>{
+		  console.log(id)
+		this.reportId = id
         this.bjVisible = !this.bjVisible;
       })
 	  eventBus.$on('centerDialogVisible', () => {
@@ -227,14 +229,16 @@
 				  throw err
 				})
 			}else{
-				Axios.send('/comment/report', 'post', {
+				Axios.send('/report/add', 'post', {
+				  //id:fComment.formdata.id,
+				  id:this.reportId,
 				  type:this.radio,
 				  msg:this.textarea2
 				}).then(res => {
 				  console.log(res)
 				  this.$router.push('/user')
 				}, error => {
-				  alert('评论添加失败')
+				  alert('********添加失败')
 				  console.log('commentReportError', error)
 				}).catch(err => {
 				  throw err
