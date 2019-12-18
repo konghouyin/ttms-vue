@@ -1,7 +1,7 @@
 <template>
-  <pdd>
+  <pdd :inputName="id">
     <div class="change">
-      <el-input placeholder="请输入影厅编号" v-model="input3" class="input-with-select" style="width: 190px;float: left; margin-left: 40px;">
+      <el-input placeholder="请输入影厅编号" v-model="id" class="input-with-select" style="width: 190px;float: left; margin-left: 40px;">
           <el-button slot="append" icon="el-icon-refresh"></el-button>
         </el-input>
         <el-button type="primary" round style="float: right; margin-right: 40px;" @click="red()">重新选择</el-button>
@@ -14,7 +14,7 @@
   export default {
     data() {
       return {
-        input3:''
+        id:''
       }
     },
     components:{
@@ -25,6 +25,9 @@
         window.location = '#/manager/cinema/query'
       }
     },
+    mounted(){
+      this.id = this.$router.history.current.query.id 
+    }
   }
 </script>
 

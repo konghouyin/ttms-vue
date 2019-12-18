@@ -5,15 +5,15 @@
         style="width: 100%;">
         <el-table-column prop="order" label="编号" width="80px" sortable style="display: flex;">
         </el-table-column>
-        <el-table-column prop="pname" label="影片名称" style="display: flex;" :filters="yct"
+        <el-table-column prop="pname" label="影片名称" style="display: flex;" :filters="ju"
           :filter-method="filterTag1">
         </el-table-column>
-        <el-table-column prop="name" label="影厅名称" style="display: flex;" :filters="ju"
+        <el-table-column prop="name" label="影厅名称" style="display: flex;" :filters="yct"
           :filter-method="filterTag2">
         </el-table-column>
-        <el-table-column prop="date" label="开始日期" sortable style="display: flex;">
+        <el-table-column prop="date" label="开始时间" sortable style="display: flex;">
         </el-table-column>
-        <el-table-column prop="startTime" label="开始时间" sortable style="display: flex;">
+        <el-table-column prop="money" label="金额" sortable style="display: flex;">
         </el-table-column>
         <el-table-column align="right" style="padding: 0;" width="130px">
           <div slot="header" slot-scope="scope" style="width: 100%; height: 100%; margin: 0; padding: 0; display: flex;align-items:center">
@@ -36,8 +36,8 @@
         order: '1',
         pname: '罗小黑战记',
         name: '1号厅',
-        date: '2019/10/1',
-        startTime: '10:00',
+        date: '2019/10/1-10:00',
+        money: '30',
       };
       return {
         yct:[{ text: '1号厅', value: '1号厅' }],

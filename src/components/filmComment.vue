@@ -27,6 +27,7 @@
       }
     },
     methods:{
+        
       bj(){
         eventBus.$emit('bjevent')
       }
