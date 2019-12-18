@@ -101,9 +101,9 @@
                     </el-dialog>
                     <el-dialog :visible.sync="bjVisible" width="490px" center>
                         <div style="height: 27.4px; padding-bottom: 10px; margin-bottom: 20px; color: #222222; font-size: 18px; border-bottom: 1px solid #eee;text-align: center;">请选择举报理由</div>
-                        <div v-for="item in reporttype">
-                            <el-radio v-for="it in item" v-model="radio" :label="it">{{it}}</el-radio><br /><br /><br />
-                        </div>
+                        
+                            <el-radio v-for="it in reporttype" v-model="radio" :label="it">{{it}}</el-radio><br /><br /><br />
+                        
                         <el-input type="textarea" :rows="4" placeholder="请输入内容" v-model="textarea2">
                         </el-input>
                         <el-button :disabled="radio===''" type="danger" style="margin-top: 20px; margin-left: 370px;"
@@ -117,112 +117,159 @@
 
 
 </template>
-
 <script>
-    import eventBus from '../eventBus.js'
-    import fImage from './filmRecommend.vue'
-    import pImage from './filmPerson.vue'
-    import fComment from './filmComment.vue'
-    import top from './UserTopTest'
-    import Axios from '@/axios'
-    export default {
-        data() {
-            return {
-                radio: '',
-                reporttype: [
-                    ['违法违规', '色情', '低俗', '赌博诈骗'],
-                    ['人身攻击', '侵犯隐私'],
-                    ['垃圾广告', '引战', '剧透', '刷屏'],
-                    ['抢楼', '视频不相关', '青少年不良信息']
-                ],
-                love: false,
-                rate: false,
-                isrc: [require('@/assets/x1.png'), require('@/assets/x2.png'), require('@/assets/x3.png'), require(
-                    '@/assets/x4.png')],
-                textarea: '',
-                textarea2: '',
-                mark2: 0,
-                centerDialogVisible: false,
-                bjVisible: false,
-                activeIndex: '1',
-                src: 'https://p0.meituan.net/movie/c5975d98fc484027ff55d813ab3b2daa427032.jpg@464w_644h_1e_1c',
-                name: '小Q',
-                ename: 'Little Q',
-                type: '剧情',
-                local: '中国大陆',
-                length: '147分钟',
-                time: '2019-09-20大陆上映',
-                mark: 4.6,
-                money: 9256,
-                psrc1: 'https://p1.meituan.net/movie/e4806ecd8b0d5847e37600bf4dabd51b842595.jpg@465w_258h_1e_1c',
-                psrc2: 'https://p0.meituan.net/movie/b675273b881fd51011f50b9a20efeadf1225608.jpg@126w_126h_1e_1c',
-                psrc3: 'https://p0.meituan.net/movie/03a0fa1a2da20e950f5587d88dc1a7eb1359343.jpg@126w_126h_1e_1c',
-                psrc4: 'https://p0.meituan.net/movie/db977983f55ca4eb9af6e383e1f7c8071223335.jpg@126w_126h_1e_1c',
-                psrc5: 'https://p0.meituan.net/movie/39e304e30fe560ec867a2ae8feed8ab6925188.jpg@126w_126h_1e_1c',
-                text: '聪明可爱的小Q在训练师悉心照料和训练过程中成长为一只合格的导盲犬，并遇到了主人李宝庭（任达华 饰）——中年失明、孤僻又坏脾气的天才糕点师。他们共同生活的日子里，小Q逐渐融化并走入了宝庭的心里，温情的陪伴令处于低谷期的宝庭有了新生活，一人一犬，深深的羁绊，他们谁也无法再失去彼此'
-            }
-        },
-        components: {
-            fImage,
-            pImage,
-            fComment,
-            top
-        },
-        mounted() {
-            console.log(this.$router)
-            Axios.send('/displayone', 'post', {
-                playid: this.$router.history.current.query.id,
-            }).then(res => {
-                this.src=res.obj.play_pic;
-                this.text=res.obj.play_message;
-                this.name=res.obj.play_name;
-                this.type=res.obj.play_type;
-                this.length=res.obj.play_length;
-                this.local=res.obj.play_country;
-                console.log(res)
-            }, error => {
-                console.log('displayoneAxiosError', error)
-            }).catch(err => {
-                throw err
-            })
+	import Axios from '@/axios'
+  import eventBus from '../eventBus.js'
+  import fImage from './filmRecommend.vue'
+  import pImage from './filmPerson.vue'
+  import fComment from './filmComment.vue'
+  import top from './UserTopTest'
+  export default {
+    data() {
+      return {
+        radio:'',
+        reporttype:[
+          // '违法违规','色情','低俗','赌博诈骗',
+          // '人身攻击','侵犯隐私',
+          // '垃圾广告','引战','剧透','刷屏',
+          // '抢楼','视频不相关','青少年不良信息'
+        ],
+        love: false,
+        rate: false,
+        isrc:[require('@/assets/x1.png'), require('@/assets/x2.png'), require('@/assets/x3.png'), require('@/assets/x4.png')],
+        textarea: '',
+        textarea2: '',
+        mark2: 0,
+        centerDialogVisible: false,
+        bjVisible:false,
+        activeIndex: '1',
+        src: 'https://p0.meituan.net/movie/c5975d98fc484027ff55d813ab3b2daa427032.jpg@464w_644h_1e_1c',
+        name: '小Q',
+        ename: 'Little Q',
+        type: '剧情',
+        local: '中国大陆',
+        length: '147分钟',
+        time: '2019-09-20大陆上映',
+        mark: 4.6,
+        money: 9256,
+        psrc1: 'https://p1.meituan.net/movie/e4806ecd8b0d5847e37600bf4dabd51b842595.jpg@465w_258h_1e_1c',
+        psrc2: 'https://p0.meituan.net/movie/b675273b881fd51011f50b9a20efeadf1225608.jpg@126w_126h_1e_1c',
+        psrc3: 'https://p0.meituan.net/movie/03a0fa1a2da20e950f5587d88dc1a7eb1359343.jpg@126w_126h_1e_1c',
+        psrc4: 'https://p0.meituan.net/movie/db977983f55ca4eb9af6e383e1f7c8071223335.jpg@126w_126h_1e_1c',
+        psrc5: 'https://p0.meituan.net/movie/39e304e30fe560ec867a2ae8feed8ab6925188.jpg@126w_126h_1e_1c',
+        text: '聪明可爱的小Q在训练师悉心照料和训练过程中成长为一只合格的导盲犬，并遇到了主人李宝庭（任达华 饰）——中年失明、孤僻又坏脾气的天才糕点师。他们共同生活的日子里，小Q逐渐融化并走入了宝庭的心里，温情的陪伴令处于低谷期的宝庭有了新生活，一人一犬，深深的羁绊，他们谁也无法再失去彼此'
+      }
+    },
+    components: {
+      fImage,
+      pImage,
+      fComment,
+      top
+    },
+    mounted(){
+      eventBus.$on('bjevent',(id)=>{
+		  console.log(id)
+		this.reportId = id
+        this.bjVisible = !this.bjVisible;
+      })
+	  eventBus.$on('centerDialogVisible', () => {
+	      this.centerDialogVisible = !this.centerDialogVisible;
+	  })
+	  
+	  Axios.send('/reportType/getreportType', 'get', {
+		  
+	  }).then(res => {
+		this.reporttype = res.obj
+	    console.log(res)
+	  }, error => {
+	    alert('评论添加失败')
+	    console.log('commentReportError', error)
+	  }).catch(err => {
+	    throw err
+	  }),
+	  
+	  
+	  Axios.send('/displayone', 'post', {
+	      playid: this.$router.history.current.query.id,
+	  }).then(res => {
+	      this.src=res.obj.play_pic;
+	      this.text=res.obj.play_message;
+	      this.name=res.obj.play_name;
+	      this.type=res.obj.play_type;
+	      this.length=res.obj.play_length;
+	      this.local=res.obj.play_country;
+	      console.log(res)
+	  }, error => {
+	      console.log('displayoneAxiosError', error)
+	  }).catch(err => {
+	      throw err
+	  })
 
-
-        eventBus.$on('bjevent', () => {
-            this.bjVisible = !this.bjVisible;
-        })
+        
     },
     methods: {
         open(title, msg) {
             const h = this.$createElement;
-
             this.$notify({
-                title: title,
-                message: h('i', {
-                    style: 'color: teal'
-                }, msg),
-                duration: 1500
+              title: title,
+              message: h('i', { style: 'color: teal'}, msg),
+              duration:1500
             });
-        }
-    }
-    }
+			if(title == '评价成功'){
+				Axios.send('/comment/add', 'post', {
+				  text:this.textarea,
+				  grade:this.mark2*2
+				}).then(res => {
+				  console.log(res)
+				  this.$router.push('/user')
+				}, error => {
+				  alert('评论添加失败')
+				  console.log('commentAddError', error)
+				}).catch(err => {
+				  throw err
+				})
+			}else{
+				Axios.send('/report/add', 'post', {
+				  //id:fComment.formdata.id,
+				  //playid: this.$router.history.current.query.id,
+				  id:this.reportId,
+				  type:this.radio,
+				  msg:this.textarea2
+				}).then(res => {
+				  console.log(res)
+				  this.$router.push('/user')
+				}, error => {
+				  alert('********添加失败')
+				  console.log('commentReportError', error)
+				}).catch(err => {
+				  throw err
+				})
+			}
+			
+          }
+     }
+  }
 </script>
 
 <style scoped>
-    .but {
-        outline: none;
-        float: right;
-        cursor: pointer;
-        background: #FFFFFF;
-        display: block;
-        height: 30px;
-        padding: 0 10px;
-        border-radius: 15px;
-        border: 1px solid #ef4238;
-        text-align: center;
-        font-size: 14px;
-        line-height: 30px;
-        color: #ef4238;
-    }
+	.line{
+		margin: 10px 20px;
+		}
+  .but {
+    outline: none;
+    float: right;
+    cursor: pointer;
+    background: #FFFFFF;
+    display: block;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 15px;
+    border: 1px solid #ef4238;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+    color: #ef4238;
+  }
 
     .banner {
         width: 100%;

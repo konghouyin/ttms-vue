@@ -23,8 +23,8 @@
 </template>
 
 <script>
+	import Axios from '@/axios'
     import uModl from './UseruModl.vue'
-    import Axios from '@/axios'
     export default {
         data() {
             return {

@@ -102,6 +102,9 @@
 		components:{
 
 		},
+		mounted(){
+			
+		},
 		methods:{
 			del :function(){
 				confirm("确定删除吗？")
