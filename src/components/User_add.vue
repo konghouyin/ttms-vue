@@ -121,7 +121,7 @@
 		       Axios.send('/PersonAdd', 'post', {
 		          username: this.ruleForm.username,
 		          pass: this.ruleForm.pass,
-		          tel:this.ruleForm.tel,
+		          phemail:this.ruleForm.phemail,
 		          status: status
 		        }).then(res => {
 		          console.log(res)
