@@ -39,9 +39,10 @@
 </template>
 
 <script>
+  import Axios from '@/axios'
   export default {
     data() {
-      return {        
+      return {
         ifshow:false,
         num: [],
         imgsrc: [require('@/assets/set.png'), require('@/assets/none.png'), require('@/assets/stop.png')],
@@ -69,7 +70,9 @@
         }
       }
     },
+    props: ["inputName"],
     mounted() {
+
       this.num = new Array(this.ruleForm.col * this.ruleForm.row).fill(0);
     },
     computed: {
@@ -84,7 +87,44 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+              let status = 1;
+              if(this.ruleForm.status){
+                   status = 1;
+              }else{
+                   status = 0;
+              }
+              if(this.inputName){
+                  Axios.send('/cinemaUpdate', 'post', {
+                    roomid: this.inputName,
+                    roomname: this.ruleForm.name,
+                    roomrow: this.ruleForm.row,
+                    roomcol: this.ruleForm.col,
+                    roomstatus: status,
+                    seat: this.num
+                  }).then(res => {
+                    console.log(res)
+
+                  }, error => {
+                    console.log('cinemaUpdateAxiosError', error)
+                  }).catch(err => {
+                    throw err
+                  })
+              }else{
+                  Axios.send('/cinemaAdd', 'post', {
+                    roomname: this.ruleForm.name,
+                    roomrow: this.ruleForm.row,
+                    roomcol: this.ruleForm.col,
+                    roomstatus: status,
+                    seat: this.num
+                  }).then(res => {
+                    console.log(res)
+
+                  }, error => {
+                    console.log('cinemaAddAxiosError', error)
+                  }).catch(err => {
+                    throw err
+                  })
+              }
           } else {
             console.log('error submit!!');
             return false;
@@ -123,6 +163,38 @@
           this.num = new Array(this.ruleForm.col * this.ruleForm.row).fill(0);
         },
         deep: true
+      },
+      'inputName': {
+          handler: function(val, oldVal) {
+
+          Axios.send('/seatQuery', 'post', {
+            roomid:val
+          }).then(res => {
+            console.log(res)
+            this.ruleForm.name = res.obj.room_name
+            this.ruleForm.row = res.obj.room_row
+            this.ruleForm.col = res.obj.room_col
+
+            Axios.send('/seatQueryAll', 'post', {
+              roomid:val,
+            }).then(res => {
+              console.log(res)
+                this.num = res.obj.map((item) => {
+                  
+                    return item.seat_status
+                })
+            }, error => {
+              console.log('seatQueryAxiosError', error)
+            }).catch(err => {
+              throw err
+            })
+
+          }, error => {
+            console.log('seatQueryAxiosError', error)
+          }).catch(err => {
+            throw err
+          })
+        }
       }
     }
   }
