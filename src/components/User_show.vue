@@ -64,17 +64,35 @@
 					},
 					power: ["票理" , "assssd","asssd"],
 					email: '123@mail.com',
-				}]
+				}],
+				formdata:[{
+					name:null,
+					password:null,
+					power:null,
+					email:null
+				}],
 			}
 		},
 		mounted(){
 			Axios.send('/PersonQuery', 'post', {
-			  
+			 
 			}).then(res => {
-				
-				
-				
 			  console.log(res)
+			  let list = []
+			  if (res.obj.length > 4) {
+			      for (var i = 0; i < 4; i++) {
+			          list.push({name:res.obj[i].user_name,password:res.obj[i].user_password,
+					  power:res.obj[i].user_status,email:res.obj[i].user_mail})
+			  
+			      }
+			  } else {
+			      res.obj.forEach(function(item) {
+			          list.push({name:item.user_name,id:item.user_password,
+					  power:item.user_status,email:item.user_mail})
+			      })
+			  }
+			  
+			  this.formdata = list
 			}, error => {
 			  console.log('registerAxiosError', error)
 			}).catch(err => {
