@@ -109,7 +109,7 @@
                 k.isShow = !k.isShow;
             },
             handleEdit(row) {
-                console.log(row);
+                this.$router.push({path: 'modify', query: {id: row.id}})
             }
         },
         computed: {

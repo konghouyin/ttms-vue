@@ -87,8 +87,13 @@
       }
     },
     mounted() {
-        Axios.send('/managerselect', 'post',).then(res => {
-            console.log(1);
+        this.input3 = this.$router.history.current.query.id
+        console.log(this.$router.history)
+        Axios.send('/managerselect', 'post',{
+            userid: this.input3
+        }).then(res => {
+
+            console.log(this.input3);
           console.log(res)
           console.log(2);
             let status = res.obj.user_status.split(',').map((item)=>{
