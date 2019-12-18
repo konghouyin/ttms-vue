@@ -43,6 +43,7 @@
 </template>
 
 <script>
+	import Axios from '@/axios'
 	var k;
 	export default{
 		data(){
@@ -55,22 +56,45 @@
 					} ,
 					power: ["票务经理" , "asd","asd"],
 					email: '123@mail.com'
-				},{
-					name: '狼',
+				},],
+			}
+		},
+		mounted(){
+			Axios.send('/PersonQuery', 'post', {
+			 
+			}).then(res => {
+			  console.log(res)
+			  let list = []
+			  res.obj.forEach(function(item){
+				  list.push({
+					name: item.user_name,
 					password:{
-						item:'123456',
+						item:item.user_password,
 						isShow:false
 					},
-					power: ["票理" , "assssd","asssd"],
-					email: '123@mail.com',
-				}]
-			}
+					power: item.user_status.split(',').map((item)=>{
+						if(item==1) return "剧目管理"
+						if(item==2) return "影厅管理"
+						if(item==3) return "计划管理"
+						if(item==4) return "财务管理"
+						if(item==5) return "人员管理"
+						if(item==6) return "评论管理"
+						if(item==7) return "销售管理"
+						if(item==8) return "用户"
+					}),
+					email: item.user_mail?item.user_mail:'',
+				})
+			  })
+			  
+			  this.UserData = list
+			}, error => {
+			  console.log('registerAxiosError', error)
+			}).catch(err => {
+			  throw err
+			})
 		},
 		components:{
 
-		},
-		mounted(){
-			
 		},
 		methods:{
 			del :function(){

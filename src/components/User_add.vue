@@ -26,6 +26,7 @@
 </template>
 
 <script>
+	import Axios from '@/axios'
   export default {
     data() {
       var checkemail = (rule, value, callback) => {
@@ -43,7 +44,7 @@
           username: '',
           pass: '',
           phemail: '',
-          list: ['xitong', 'yonghu', 'xxx', 'sss'],
+          list: ['剧目管理', '影厅管理', '计划管理', '财务管理','人员管理','评论管理','销售管理','用户'],
           status: []
         },
         rules: {
@@ -84,17 +85,58 @@
         }
       }
     },
+
     methods: {
       submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
+        // this.$refs[formName].validate((valid) => {
+        //   if (valid) {
+        //     alert('submit!');
+        //   } else {
+        //     console.log('error submit!!');
+        //     return false;
+        //   }
+        // });
+		this.$refs[formName].validate((valid) => {
+		    if (valid) {
+		        let status = this.ruleForm.status.map((item)=>{
+		            if(item=="剧目管理")
+		              return 1
+		            if(item=="影厅管理")
+		               return 2
+		            if(item=="计划管理")
+		               return 3
+		            if(item=="财务管理")
+		               return 4
+		            if(item=="人员管理")
+		               return 5
+		            if(item=="评论管理")
+		              return 6
+		            if(item=="销售管理")
+		              return 7
+		            if(item=="用户")
+		              return 8
+		        })
+		        status.sort();
+		        console.log(status)
+		       Axios.send('/PersonAdd', 'post', {
+		          username: this.ruleForm.username,
+		          pass: this.ruleForm.pass,
+		          tel:this.ruleForm.tel,
+		          status: status
+		        }).then(res => {
+		          console.log(res)
+		        }, error => {
+		          console.log('userAddAxiosError', error)
+		        }).catch(err => {
+		          throw err
+		        })
+		      console.log(this.ruleForm)
+		    } else {
+		      console.log('error submit!!')
+		      return false
+		    }
+		  })
+		},
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }

@@ -19,9 +19,11 @@
         <el-input v-model="ruleForm.age"></el-input>
       </el-form-item>
 
+
       <br>
       <el-form-item label="邮箱" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
+
 
       </el-form-item>
       <el-form-item>
