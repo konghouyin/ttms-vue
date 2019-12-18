@@ -114,35 +114,7 @@
                 }
             }
         },
-        mounted() {
-            this.id = this.$router.history.current.query.changeId
-            if (this.id) {
-                this.type = "更新"
-                Axios.send('/displayone', 'post', {
-                    playid: this.id
-                }).then(res => {
-                    let msg = res.obj
-                    this.ruleForm.url = msg.play_path
-                    this.ruleForm.name = msg.play_name
-                    this.ruleForm.type = msg.play_type
-                    this.ruleForm.director = msg.play_director
-                    this.ruleForm.length = msg.play_length
-                    this.ruleForm.language = msg.play_language
-                    this.ruleForm.country = msg.play_country
-                    this.ruleForm.actor = msg.play_performer
-                    this.ruleForm.img = msg.play_pic
-                    this.ruleForm.link = msg.play_link
-                    this.ruleForm.status = msg.play_status
-                    this.comment = false
-                    console.log(res)
-                }, error => {
-                    console.log('displayoneAxiosError', error)
-                }).catch(err => {
-                    throw err
-                })
-            }
-            console.log(this.id)
-        },
+        props: ["id"],
         methods: {
             analysis() {
                 Axios.send('/analysis', 'post', {
@@ -165,7 +137,7 @@
                     this.ruleForm.img = msg.img
                 }, error => {
                     alert('解析错误')
-                    console.log('registerAxiosError', error)
+                    console.log('analysisAxiosError', error)
                 }).catch(err => {
                     throw err
                 })
@@ -173,7 +145,6 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-
                         if (this.id) {
                             Axios.send('/updateplay', 'post', {
                                 id: this.id,
@@ -191,10 +162,12 @@
                                 comment: this.ruleForm.comment
                             }).then(res => {
                                 console.log(res)
+                                alert("更新成功")
                             }, error => {
                                 console.log(
                                     'updateplayAxiosError',
                                     error)
+                                     alert("更新失败")
                             }).catch(err => {
                                 throw err
                             })
@@ -214,10 +187,12 @@
                                 comment: this.ruleForm.comment
                             }).then(res => {
                                 console.log(res)
+                                alert("添加成功")
                             }, error => {
                                 console.log(
                                     'addplayAxiosError',
                                     error)
+                                    alert("添加失败")
                             }).catch(err => {
                                 throw err
                             })
@@ -232,7 +207,48 @@
             resetForm(formName) {
                 this.$refs[formName].resetFields()
             }
-        }
+        },
+        watch: {
+            id(newValue, oldValue) {
+                this.ruleForm.comment = false
+                Axios.send('/displayone', 'post', {
+                    playid: newValue
+                }).then(res => {
+                    let msg = res.obj
+                    this.ruleForm.url = msg.play_path
+                    this.ruleForm.name = msg.play_name
+                    this.ruleForm.type = msg.play_type
+                    this.ruleForm.director = msg.play_director
+                    this.ruleForm.length = msg.play_length
+                    this.ruleForm.language = msg.play_language
+                    this.ruleForm.country = msg.play_country
+                    this.ruleForm.actor = msg.play_performer
+                    this.ruleForm.img = msg.play_pic
+                    this.ruleForm.link = msg.play_link
+                    this.ruleForm.status = msg.play_status
+                    this.type = "更新"
+                    console.log(res)
+                }, error => {
+                    console.log('displayoneAxiosError', error)
+                    this.ruleForm = {
+                        url: '',
+                        name: '',
+                        type: '',
+                        director: '',
+                        length: '',
+                        language: '',
+                        country: '',
+                        actor: '',
+                        img: '',
+                        link: '',
+                        status: '',
+                        comment: false
+                    }
+                }).catch(err => {
+                    throw err
+                })
+            }
+        },
     }
 </script>
 

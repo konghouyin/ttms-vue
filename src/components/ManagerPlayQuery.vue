@@ -45,7 +45,7 @@
                         order: item.play_id,
                         name: item.play_name,
                         length: item.play_length + "min",
-                        status: item == 1 ? '正在热映' : item == 2 ? "即将上映" : "已经下线"
+                        status: item.play_status
                     })
                 })
                 this.tableData = list

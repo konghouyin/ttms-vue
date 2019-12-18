@@ -2,7 +2,7 @@
     <div>
         <div class="change">
             <el-input placeholder="请输入影片编号" v-model="input3" class="input-with-select" style="width: 190px;float: left; margin-left: 40px;">
-                <el-button slot="append" icon="el-icon-refresh"></el-button>
+                <el-button slot="append" icon="el-icon-refresh" @click="changeMovie"></el-button>
             </el-input>
             <el-button type="primary" round style="float: right; margin-right: 40px;" @click="red()">重新选择</el-button>
         </div>
@@ -21,9 +21,15 @@
                 id: -1
             }
         },
+        mounted() {
+           this.id = this.$router.history.current.query.changeId
+        },
         methods: {
             red() {
                 window.location = '#/manager/play/query'
+            },
+            changeMovie(){
+                this.id = this.input3
             }
         },
         components: {
