@@ -9,7 +9,7 @@
                 </el-table-column>
                 <el-table-column prop="length" label="片长">
                 </el-table-column>
-                <el-table-column prop="status" :filters="[{ text: '正在热映', value: '正在热映' }, { text: '已下映', value: '已下映' },{ text: '即将上映', value: '即将上映' }]"
+                <el-table-column prop="status" :filters="[{ text: '正在热映', value: '正在热映' }, { text: '已经下线', value: '已经下线' },{ text: '即将上映', value: '即将上映' }]"
                     :filter-method="filterTag" label="状态">
                 </el-table-column>
                 <el-table-column align="right" style="padding: 0;" width="160px">
@@ -17,8 +17,8 @@
                         <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
                     </div>
                     <div slot-scope="scope" style="display: flex;align-items:center;justify-content:space-around">
-                        <el-button size="small" type="primary" icon="el-icon-edit" circle @click="handleEdit(scope.$index, scope.row)"></el-button>
-                        <el-button size="small" type="danger" icon="el-icon-delete" circle @click="handleDelete(scope.$index, scope.row)"></el-button>
+                        <el-button size="small" type="primary" icon="el-icon-edit" circle @click="handleEdit(scope.row)"></el-button>
+                        <el-button size="small" type="danger" icon="el-icon-delete" circle @click="handleDelete()"></el-button>
                     </div>
                 </el-table-column>
             </el-table>
@@ -30,7 +30,7 @@
     import Axios from '@/axios'
     export default {
         data() {
-            
+
             return {
                 tableData: [],
                 search: ''
@@ -50,15 +50,19 @@
                 })
                 this.tableData = list
             }, error => {
-                console.log('registerAxiosError', error)
+                console.log('displayAxiosError', error)
             }).catch(err => {
                 throw err
             })
         },
         methods: {
-            handleEdit(index, row) {
-                window.location = '#/manager/play/change'
-                console.log(index, row);
+            handleEdit(row) {
+                this.$router.push({
+                    path: '/manager/play/change',
+                    query: {
+                        id: row.order
+                    }
+                })
             },
             handleDelete(index, row) {
                 console.log(index, row);
