@@ -41,163 +41,199 @@
             <el-switch v-model="ruleForm.comment"></el-switch>
         </el-form-item>
         <el-form-item style="display: inline-block; ">
-            <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+            <el-button type="primary" @click="submitForm('ruleForm')">{{type}}</el-button>
             <el-button type="info" @click="resetForm('ruleForm')" style="margin-right: 35px;">重置</el-button>
         </el-form-item>
     </el-form>
 </template>
 <script>
-import Axios from '@/axios'
-export default {
-  data () {
-    return {
-      options: [{
-        value: '正在热映',
-        label: '正在热映'
-      },
-      {
-        value: '即将上线',
-        label: '即将上线'
-      },
-      {
-        value: '已下线',
-        label: '已下线'
-      }
-      ],
-      ruleForm: {
-        url: '',
-        name: '',
-        type: '',
-        director: '',
-        length: '',
-        language: '',
-        country: '',
-        actor: '',
-        img: '',
-        link: '',
-        status: '',
-        comment: true
-      },
-      rules: {
-        url: [{
-          required: true,
-          message: '请输入影片的豆瓣地址',
-          trigger: 'blur'
-        }],
-        name: [{
-          required: true,
-          message: '请输入影片名称',
-          trigger: 'blur'
+    import Axios from '@/axios'
+    export default {
+        data() {
+            return {
+                type: "立即添加",
+                options: [{
+                        value: '正在热映',
+                        label: '正在热映'
+                    },
+                    {
+                        value: '即将上线',
+                        label: '即将上线'
+                    },
+                    {
+                        value: '已下线',
+                        label: '已下线'
+                    }
+                ],
+                ruleForm: {
+                    url: '',
+                    name: '',
+                    type: '',
+                    director: '',
+                    length: '',
+                    language: '',
+                    country: '',
+                    actor: '',
+                    img: '',
+                    link: '',
+                    status: '',
+                    comment: true
+                },
+                rules: {
+                    url: [{
+                        message: '请输入影片的豆瓣地址',
+                        trigger: 'blur'
+                    }],
+                    name: [{
+                            required: true,
+                            message: '请输入影片名称',
+                            trigger: 'blur'
+                        },
+                        {
+                            min: 1,
+                            max: 50,
+                            message: '长度在 1 到 50 个字符',
+                            trigger: 'blur'
+                        }
+                    ],
+                    length: [{
+                        required: true,
+                        message: '请输入影片时长',
+                        trigger: 'blur'
+                    }],
+                    img: [{
+                        required: true,
+                        message: '请输入海报 `地址',
+                        trigger: 'blur'
+                    }],
+                    status: [{
+                        required: true,
+                        message: '请选择影片状态',
+                        trigger: 'blur'
+                    }]
+                }
+            }
         },
-        {
-          min: 1,
-          max: 50,
-          message: '长度在 1 到 50 个字符',
-          trigger: 'blur'
+        mounted() {
+            this.id = this.$router.history.current.query.changeId
+            if (this.id) {
+                this.type = "更新"
+                Axios.send('/displayone', 'post', {
+                    playid: this.id
+                }).then(res => {
+                    let msg = res.obj
+                    this.ruleForm.url = msg.play_path
+                    this.ruleForm.name = msg.play_name
+                    this.ruleForm.type = msg.play_type
+                    this.ruleForm.director = msg.play_director
+                    this.ruleForm.length = msg.play_length
+                    this.ruleForm.language = msg.play_language
+                    this.ruleForm.country = msg.play_country
+                    this.ruleForm.actor = msg.play_performer
+                    this.ruleForm.img = msg.play_pic
+                    this.ruleForm.link = msg.play_link
+                    this.ruleForm.status = msg.play_status
+                    this.comment = false
+                    console.log(res)
+                }, error => {
+                    console.log('displayoneAxiosError', error)
+                }).catch(err => {
+                    throw err
+                })
+            }
+            console.log(this.id)
+        },
+        methods: {
+            analysis() {
+                Axios.send('/analysis', 'post', {
+                    path: this.ruleForm.url
+                }).then(res => {
+                    console.log(res)
+                    let msg = res.obj
+                    this.ruleForm.name = msg.name
+                    this.ruleForm.type = msg.type
+                    this.ruleForm.director = msg.director.map((item) => {
+                        return item.name
+                    }).join(' / ')
+                    this.ruleForm.length = msg.runtime
+                    this.ruleForm.language = msg.language
+                    this.ruleForm.country = msg.place
+                    this.ruleForm.actor = msg.actors.map((
+                        item) => {
+                        return item.name
+                    }).join(' / ')
+                    this.ruleForm.img = msg.img
+                }, error => {
+                    alert('解析错误')
+                    console.log('registerAxiosError', error)
+                }).catch(err => {
+                    throw err
+                })
+            },
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+
+                        if (this.id) {
+                            Axios.send('/updateplay', 'post', {
+                                id: this.id,
+                                path: this.ruleForm.url,
+                                name: this.ruleForm.name,
+                                type: this.ruleForm.type,
+                                director: this.ruleForm.director,
+                                performer: this.ruleForm.actor,
+                                length: this.ruleForm.length,
+                                country: this.ruleForm.country,
+                                language: this.ruleForm.language,
+                                status: this.ruleForm.status,
+                                pic: this.ruleForm.img,
+                                link: this.ruleForm.link,
+                                comment: this.ruleForm.comment
+                            }).then(res => {
+                                console.log(res)
+                            }, error => {
+                                console.log(
+                                    'updateplayAxiosError',
+                                    error)
+                            }).catch(err => {
+                                throw err
+                            })
+                        } else {
+                            Axios.send('/addplay', 'post', {
+                                path: this.ruleForm.url,
+                                name: this.ruleForm.name,
+                                type: this.ruleForm.type,
+                                director: this.ruleForm.director,
+                                performer: this.ruleForm.actor,
+                                length: this.ruleForm.length,
+                                country: this.ruleForm.country,
+                                language: this.ruleForm.language,
+                                status: this.ruleForm.status,
+                                pic: this.ruleForm.img,
+                                link: this.ruleForm.link,
+                                comment: this.ruleForm.comment
+                            }).then(res => {
+                                console.log(res)
+                            }, error => {
+                                console.log(
+                                    'addplayAxiosError',
+                                    error)
+                            }).catch(err => {
+                                throw err
+                            })
+                        }
+
+                    } else {
+                        console.log('error submit!!')
+                        return false
+                    }
+                })
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields()
+            }
         }
-        ],
-        length: [{
-          required: true,
-          message: '请输入影片时长',
-          trigger: 'blur'
-        }],
-        img: [{
-          required: true,
-          message: '请输入海报 `地址',
-          trigger: 'blur'
-        }],
-        status: [{
-          required: true,
-          message: '请选择影片状态',
-          trigger: 'blur'
-        }]
-      }
     }
-  },
-  mounted () {
-    this.id = this.$router.history.current.query.id
-    if (this.id) {
-      Axios.send('/displayone', 'post', {
-        playid: this.id
-      }).then(res => {
-        // this.src=res.obj.play_pic;
-        // this.text=res.obj.play_message;
-        // this.name=res.obj.play_name;
-        // this.type=res.obj.play_type;
-        // this.length=res.obj.play_length;
-        // this.local=res.obj.play_country;
-        console.log(res)
-      }, error => {
-        console.log('displayoneAxiosError', error)
-      }).catch(err => {
-        throw err
-      })
-    }
-    console.log(this.id)
-  },
-  methods: {
-    analysis () {
-      Axios.send('/analysis', 'post', {
-        path: this.ruleForm.url
-      }).then(res => {
-        console.log(res)
-        let msg = res.obj
-        this.ruleForm.name = msg.name
-        this.ruleForm.type = msg.type
-        this.ruleForm.director = msg.director.map((item) => {
-          return item.name
-        }).join(' / ')
-        this.ruleForm.length = msg.runtime
-        this.ruleForm.language = msg.language
-        this.ruleForm.country = msg.place
-        this.ruleForm.actor = this.ruleForm.actors = msg.actors.map((
-          item) => {
-          return item.name
-        }).join(' / ')
-        this.ruleForm.img = msg.img
-      }, error => {
-        alert('解析错误')
-        console.log('registerAxiosError', error)
-      }).catch(err => {
-        throw err
-      })
-    },
-    submitForm (formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          Axios.send('/addplay', 'post', {
-            path: this.ruleForm.url,
-            name: this.ruleForm.name,
-            type: this.ruleForm.type,
-            director: this.ruleForm.director,
-            performer: this.ruleForm.actor,
-            length: this.ruleForm.length,
-            country: this.ruleForm.country,
-            language: this.ruleForm.language,
-            status: this.ruleForm.status,
-            pic: this.ruleForm.img,
-            link: this.ruleForm.link,
-            comment: this.ruleForm.comment
-          }).then(res => {
-            console.log(res)
-          }, error => {
-            console.log(
-              'registerAxiosError',
-              error)
-          }).catch(err => {
-            throw err
-          })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
-    },
-    resetForm (formName) {
-      this.$refs[formName].resetFields()
-    }
-  }
-}
 </script>
 
 <style>

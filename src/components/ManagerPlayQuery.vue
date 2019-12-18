@@ -60,7 +60,7 @@
                 this.$router.push({
                     path: '/manager/play/change',
                     query: {
-                        id: row.order
+                        changeId: row.order
                     }
                 })
             },
