@@ -3,11 +3,11 @@
     <div class="up-left-image" :style="'background-image: url('+ruleForm.img+');'"></div>
 
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="昵称" prop="name" readonly="readonly">
-        <el-input v-model="ruleForm.name"></el-input>
+      <el-form-item label="昵称" prop="name">
+        <el-input v-model="ruleForm.name" :disabled="true"></el-input>
       </el-form-item>
-      <el-form-item label="性别" prop="resource">
-        <el-radio-group v-model="ruleForm.resource">
+      <el-form-item label="性别" prop="sex">
+        <el-radio-group v-model="ruleForm.sex">
           <el-radio label="男"></el-radio>
           <el-radio label="女"></el-radio>
         </el-radio-group>
@@ -40,7 +40,7 @@ export default {
         name: '',
         tel: '',
         email: '',
-        resource: '',
+        sex: '',
         age:''
       },
       rules: {
@@ -54,7 +54,7 @@ export default {
         email: [
           { required: true, message: '请输入电子邮箱', trigger: 'change' }
         ],
-        resource: [
+        sex: [
           { required: true, message: '请选择性别', trigger: 'change' }
         ],
         age: [
@@ -63,21 +63,39 @@ export default {
       }
     }
   },
+  mounted() {
+      Axios.send('/select', 'post',).then(res => {
+        console.log(res)
+        this.ruleForm.name = res.obj.user_name
+        this.ruleForm.email = res.obj.user_mail
+        this.ruleForm.tel = res.obj.user_tel
+        this.ruleForm.age =res.obj.user_age
+        if(res.obj.user_sex==1){
+            this.ruleForm.sex="男"
+        }else{
+            this.ruleForm.sex="女"
+        }
+      }, error => {
+        console.log('userpifnAxiosError', error)
+      }).catch(err => {
+        throw err
+      })
+  },
   methods: {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
+            console.log(this.ruleForm)
             Axios.send('/usermessage', 'post', {
               username: this.ruleForm.name,
-              resource: this.ruleForm.resource=='男'?1:2,
+              sex: this.ruleForm.sex=='男'?1:2,
               tel:this.ruleForm.tel,
               email:this.ruleForm.email,
               age:this.ruleForm.age
             }).then(res => {
               console.log(res)
-              this.name = res.obj.
             }, error => {
-              console.log('usercpnAxiosError', error)
+              console.log('userpifnAxiosError', error)
             }).catch(err => {
               throw err
             })

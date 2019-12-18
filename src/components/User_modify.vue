@@ -14,8 +14,8 @@
         <el-form-item label="密码" prop="pass">
           <el-input type="password" v-model="ruleForm.pass" autocomplete="off" show-password></el-input>
         </el-form-item>
-        <el-form-item label="联系方式" prop="phemail">
-          <el-input type="text" v-model="ruleForm.phemail" autocomplete="off"></el-input>
+        <el-form-item label="手机号码" prop="tell">
+          <el-input type="text" v-model="ruleForm.tel" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="系统权限" prop="status">
           <el-checkbox-group v-model="ruleForm.status">
@@ -32,11 +32,12 @@
 </template>
 
 <script>
+    import Axios from '@/axios'
   export default {
     data() {
       var checkemail = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('请输入邮箱或手机号码'))
+          callback(new Error('请输入手机号码'))
         } else {
           // if (this.ruleForm.checkPass !== '') {
           //   this.$refs.ruleForm.validateField('checkPass');
@@ -49,8 +50,8 @@
         ruleForm: {
           username: '',
           pass: '',
-          phemail: '',
-          list: ['xitong', 'yonghu', 'xxx', 'sss'],
+          tel: '',
+          list: ['剧目管理', '影厅管理', '计划管理', '财务管理','人员管理','评论管理','销售管理','用户'],
           status: []
         },
         rules: {
@@ -70,12 +71,6 @@
               required: true,
               message: '请输入密码',
               trigger: 'blur'
-            },
-            {
-              min: 3,
-              max: 5,
-              message: '长度在 3 到 5 个字符',
-              trigger: 'blur'
             }
           ],
           status: [{
@@ -84,21 +79,87 @@
             message: '请选择权限,至少一个',
             trigger: 'change'
           }],
-          phemail: [{
+          tel: [{
             validator: checkemail,
             trigger: 'blur'
           }]
         }
       }
     },
+    mounted() {
+        Axios.send('/managerselect', 'post',).then(res => {
+
+          console.log(res.obj.user_status.split(','))
+            let status = res.obj.user_status.split(',').map((item)=>{
+                if(item=="1")
+                  return "剧目管理"
+                if(item=="2")
+                   return "影厅管理"
+                if(item=="3")
+                   return "计划管理"
+                if(item=="4")
+                   return "财务管理"
+                if(item=="5")
+                   return "人员管理"
+                if(item=="6")
+                  return "评论管理"
+                if(item=="7")
+                  return "销售管理"
+                if(item=="8")
+                  return "用户"
+            })
+          this.ruleForm.username = res.obj.user_name
+          this.ruleForm.pass = res.obj.user_password
+          this.ruleForm.tel = res.obj.user_tel
+          this.ruleForm.status = status
+
+        }, error => {
+          console.log('usermodifyAxiosError', error)
+        }).catch(err => {
+          throw err
+        })
+    },
     methods: {
+
       red() {
         window.location = '#/manager/user/show'
       },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!')
+              let status = this.ruleForm.status.map((item)=>{
+                  if(item=="剧目管理")
+                    return 1
+                  if(item=="影厅管理")
+                     return 2
+                  if(item=="计划管理")
+                     return 3
+                  if(item=="财务管理")
+                     return 4
+                  if(item=="人员管理")
+                     return 5
+                  if(item=="评论管理")
+                    return 6
+                  if(item=="销售管理")
+                    return 7
+                  if(item=="用户")
+                    return 8
+              })
+              status.sort();
+              console.log(status)
+             Axios.send('/usermodify', 'post', {
+                username: this.ruleForm.username,
+                pass: this.ruleForm.pass,
+                tel:this.ruleForm.tel,
+                status: status
+              }).then(res => {
+                console.log(res)
+              }, error => {
+                console.log('usermodifyAxiosError', error)
+              }).catch(err => {
+                throw err
+              })
+            console.log(this.ruleForm)
           } else {
             console.log('error submit!!')
             return false
