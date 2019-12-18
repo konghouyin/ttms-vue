@@ -49,41 +49,12 @@
 </template>
 
 <script>
+	import Axios from '@/axios'
 export default {
   data () {
-    const llist =
-        'To the time to life, rather than to life in time to the time to life, rather than to life in time..Life had a lot of things is futile, but we still want to experience.'
-
+    
     return {
-      tableData: [{
-        date: '2016-05-02',
-        name: llist,
-        comm: llist.substr(0, 10) + '........',
-        user: 'wolfsky',
-        film: '打工姐妹花',
-        ftype: '黄色'
-      }, {
-        date: '2016-05-04',
-        name: llist,
-        comm: llist.substr(0, 10) + '........',
-        user: 'wolf',
-        film: '老友记',
-        ftype: '暴力'
-      }, {
-        date: '2015-05-01',
-        name: llist,
-        comm: llist.substr(0, 10) + '........',
-        user: 'sky',
-        film: '老友记',
-        ftype: '反动'
-      }, {
-        date: '2016-05-03',
-        name: llist,
-        comm: llist.substr(0, 10) + '........',
-        user: 'skywolf',
-        film: '老友记',
-        ftype: '粗鄙'
-      }],
+      tableData: [],
       pickerOptions: {
         shortcuts: [{
           text: '最近一周',
@@ -114,6 +85,32 @@ export default {
       value1: '',
       value2: ''
     }
+  },
+  mounted() {
+  	Axios.send('/report/comment', 'get', {
+  			  
+  	}).then(res => {
+  	  console.log(res)
+		var list=[]
+		res.obj.forEach(function(item){
+			list.push({
+		  date: item.comment_time,
+		  name: item.comment_message,
+		  comm: item.comment_message.substr(0, 10) + '........',
+		  user: item.username,
+		  film: item.playname,
+		  ftype: item.type
+		}
+			)
+		})
+		this.tableData = list
+		
+  	}, error => {
+  	  alert('*****添加失败')
+  	  console.log('commentReportError', error)
+  	}).catch(err => {
+  	  throw err
+  	})
   },
   methods: {
     handleEdit (index, row) {

@@ -18,9 +18,11 @@
       <el-form-item label="年龄" prop="age">
         <el-input v-model="ruleForm.age"></el-input>
       </el-form-item>
+
       <br>
       <el-form-item label="邮箱" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
+
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>

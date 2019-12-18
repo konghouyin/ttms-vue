@@ -2,7 +2,7 @@
   <div class="flexm">
     <div class="movie_object" v-for="item in ggh">
       <!-- <img :scr="item" class="movie_object_1"></img> -->
-      <router-link to="/film" style="color:white"><img class="movie_object_1" :src="item" /></router-link>
+      <router-link :to="{path:'/film',query: {id:item.id}}" style="color:white"><img class="movie_object_1" :src="item.pic" /></router-link>
       <div class="movie_object_2">
         <router-link to="/user/dmovie" style="color:white;text-decoration: none;">选座购票</router-link>
       </div>
