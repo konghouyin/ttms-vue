@@ -25,8 +25,8 @@
             </div>
           </el-form>
           <div class="coList_btn">
-            <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">驳回</el-button>
-            <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            <el-button size="mini" @click="handleEdit(props.$index, props.row)">驳回</el-button>
+            <el-button size="mini" type="danger" @click="handleDelete(props.$index, props.row)">删除</el-button>
           </div>
         </template>
       </el-table-column>
@@ -87,38 +87,62 @@ export default {
     }
   },
   mounted() {
-  	Axios.send('/report/comment', 'get', {
-  			  
-  	}).then(res => {
-  	  console.log(res)
-		var list=[]
-		res.obj.forEach(function(item){
-			list.push({
-		  date: item.comment_time,
-		  name: item.comment_message,
-		  comm: item.comment_message.substr(0, 10) + '........',
-		  user: item.username,
-		  film: item.playname,
-		  ftype: item.type
-		}
-			)
-		})
-		this.tableData = list
-		
-  	}, error => {
-  	  alert('*****添加失败')
-  	  console.log('commentReportError', error)
-  	}).catch(err => {
-  	  throw err
-  	})
+  	this.refresh ()
   },
   methods: {
     handleEdit (index, row) {
       console.log(index, row)
+	  console.log(row.id)
+	  
+	  Axios.send('/report/overrule', 'post', {
+	  	comment_id : row.id
+	  }).then(res => {
+		 this.refresh ()
+	  }, error => {
+	    alert('驳回添加失败')
+	    console.log('commentOverruleError', error)
+	  }).catch(err => {
+	    throw err
+	  })
     },
     handleDelete (index, row) {
       console.log(index, row)
-    },
+	  Axios.send('/report/del', 'post', {
+	  	comment_id : row.id
+	  }).then(res => {
+	  	this.refresh () 
+	  }, error => {
+	    alert('删除失败')
+	    console.log('commentDelError', error)
+	  }).catch(err => {
+	    throw err
+	  })
+	 },
+	 refresh () {
+		  Axios.send('/report/comment', 'get', {
+		  		
+		  }).then(res => {
+		    console.log(res)
+		  	var list=[]
+		  	res.obj.forEach(function(item){
+		  		list.push({
+		  	  id:item.comment_id,
+		  	  date: item.comment_time,
+		  	  name: item.comment_message,
+		  	  comm: item.comment_message.substr(0, 10) + '........',
+		  	  user: item.username,
+		  	  film: item.playname,
+		  	  ftype: item.type
+				})
+		  	})
+		  	this.tableData = list
+			}, error => {
+				alert('*****添加失败')
+				console.log('commentOverruleError', error)
+			}).catch(err => {
+				throw err
+			})
+		},
     filterHandler (value, row, column) {
       const property = column['property']
       return row[property] === value
