@@ -1,4 +1,4 @@
-<template>
+=<template>
    <div class="三个并排的盒子 total-xy three_box" >
     <div class="three_box_min">
       <div  style="height:60px;width:300px;text-align: left;display: flex;align-items:flex-end;border-bottom: 2px solid rgb(220,220,220);">

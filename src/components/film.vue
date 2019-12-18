@@ -9,7 +9,7 @@
                 </div>
                 <div class="nei">
                     <h3 class="name">{{name}}</h3>
-                    <div style="margin-bottom: 14px; height: 23.2px; font-size: 18px;">{{ename}}</div>
+                    <div style="margin-bottom: 14px; height: 23.2px; font-size: 18px;"></div>
                     <div style="margin-bottom: 20px; font-size: 14px; height: 64.8px;">
                         <div style="height: 13.6px;">{{type}}</div>
                         <div style="margin-top: 12px; margin-bottom: 12px; height: 13.6px;">{{local}}/{{length}}</div>
@@ -44,7 +44,7 @@
                 <div class="tj">
                     <div class="mod-title">相关电影</div>
                     <div style="width: 100%; padding-top: 20px;">
-                        <f-image v-for="item in 6"></f-image>
+                        <f-image :othermovie="othermovie"></f-image>
                     </div>
                 </div>
                 <div style="width: 730px; ">
@@ -61,16 +61,16 @@
                     <div style="margin-top: 20px; display: block; font-size: 14px; text-align: left;line-height: 26px;margin-bottom: 60px;">{{text}}</div>
                     <div class="mod-title mod-title2" style="margin-bottom: 20px;">演职员表</div>
                     <div style="width: 100%; display: inline-block; margin-bottom: 60px;">
-                        <p-image v-for="item in 5"></p-image>
+                        <p-image :filmdirctor="message"></p-image>
                     </div>
                     <div class="mod-title mod-title2" style="margin-bottom: 20px;">图集</div>
                     <div style="width: 100%; height: 258px; display: inline-block; margin-bottom: 51px;">
-                        <div style="float: right; width: 260px;">
+                      <!--  <div style="float: right; width: 260px;">
                             <el-image :src="psrc2"></el-image>
                             <el-image :src="psrc3"></el-image>
                             <el-image :src="psrc4"></el-image>
                             <el-image :src="psrc5"></el-image>
-                        </div>
+                        </div> -->
                         <el-image :src="psrc1"></el-image>
                     </div>
                     <div class="mod-title mod-title2" style="margin-top: 9px; margin-bottom: 20px;">热门评论</div>
@@ -81,9 +81,9 @@
                     <div style="width: 730px; display: inline-block;">
                         <f-comment></f-comment>
                     </div>
-                    
-                    
-                    
+
+
+
                     <el-dialog :visible.sync="centerDialogVisible" width="550px" center>
                         <div style="padding-top: 30px;margin-bottom: 15px;color: #ffc600; text-align: center;">
                             <span v-show="mark2===0" style="font-size: 16px;">点击星星评分</span>
@@ -101,9 +101,9 @@
                     </el-dialog>
                     <el-dialog :visible.sync="bjVisible" width="490px" center>
                         <div style="height: 27.4px; padding-bottom: 10px; margin-bottom: 20px; color: #222222; font-size: 18px; border-bottom: 1px solid #eee;text-align: center;">请选择举报理由</div>
-                        
+
                             <el-radio v-for="it in reporttype" v-model="radio" :label="it">{{it}}</el-radio><br /><br /><br />
-                        
+
                         <el-input type="textarea" :rows="4" placeholder="请输入内容" v-model="textarea2">
                         </el-input>
                         <el-button :disabled="radio===''" type="danger" style="margin-top: 20px; margin-left: 370px;"
@@ -134,6 +134,8 @@
           // '垃圾广告','引战','剧透','刷屏',
           // '抢楼','视频不相关','青少年不良信息'
         ],
+        message:[{per:"",psrc:"",name:""},{per:"",psrc:"",name:""},{per:"",psrc:"",name:""},{per:"",psrc:"",name:""},{per:"",psrc:"",name:""}],
+        othermovie:[{name:"",psrc:""},{name:"",psrc:""},{name:"",psrc:""},{name:"",psrc:""},{name:"",psrc:""},{name:"",psrc:""}],
         love: false,
         rate: false,
         isrc:[require('@/assets/x1.png'), require('@/assets/x2.png'), require('@/assets/x3.png'), require('@/assets/x4.png')],
@@ -153,10 +155,10 @@
         mark: 4.6,
         money: 9256,
         psrc1: 'https://p1.meituan.net/movie/e4806ecd8b0d5847e37600bf4dabd51b842595.jpg@465w_258h_1e_1c',
-        psrc2: 'https://p0.meituan.net/movie/b675273b881fd51011f50b9a20efeadf1225608.jpg@126w_126h_1e_1c',
+        /* psrc2: 'https://p0.meituan.net/movie/b675273b881fd51011f50b9a20efeadf1225608.jpg@126w_126h_1e_1c',
         psrc3: 'https://p0.meituan.net/movie/03a0fa1a2da20e950f5587d88dc1a7eb1359343.jpg@126w_126h_1e_1c',
         psrc4: 'https://p0.meituan.net/movie/db977983f55ca4eb9af6e383e1f7c8071223335.jpg@126w_126h_1e_1c',
-        psrc5: 'https://p0.meituan.net/movie/39e304e30fe560ec867a2ae8feed8ab6925188.jpg@126w_126h_1e_1c',
+        psrc5: 'https://p0.meituan.net/movie/39e304e30fe560ec867a2ae8feed8ab6925188.jpg@126w_126h_1e_1c', */
         text: '聪明可爱的小Q在训练师悉心照料和训练过程中成长为一只合格的导盲犬，并遇到了主人李宝庭（任达华 饰）——中年失明、孤僻又坏脾气的天才糕点师。他们共同生活的日子里，小Q逐渐融化并走入了宝庭的心里，温情的陪伴令处于低谷期的宝庭有了新生活，一人一犬，深深的羁绊，他们谁也无法再失去彼此'
       }
     },
@@ -175,9 +177,9 @@
 	  eventBus.$on('centerDialogVisible', () => {
 	      this.centerDialogVisible = !this.centerDialogVisible;
 	  })
-	  
+
 	  Axios.send('/reportType/getreportType', 'get', {
-		  
+
 	  }).then(res => {
 		this.reporttype = res.obj
 	    console.log(res)
@@ -187,25 +189,47 @@
 	  }).catch(err => {
 	    throw err
 	  }),
-	  
-	  
+
+
 	  Axios.send('/displayone', 'post', {
 	      playid: this.$router.history.current.query.id,
 	  }).then(res => {
 	      this.src=res.obj.play_pic;
-	      this.text=res.obj.play_message;
+	      this.text=JSON.parse(res.obj.play_message).index.synopsis;
 	      this.name=res.obj.play_name;
 	      this.type=res.obj.play_type;
 	      this.length=res.obj.play_length;
 	      this.local=res.obj.play_country;
+          this.time=JSON.parse(res.obj.play_message).index.base.time;
+          console.log(JSON.parse(res.obj.play_message).index.showMovie)
+          //图集
+
+
+          this.psrc1=JSON.parse(res.obj.play_message).index.showMovie[0].img
+/*          this.psrc3=JSON.parse(res.obj.play_message).index.pic[0].img
+          this.psrc4=JSON.parse(res.obj.play_message).index.pic[1].img */
+
+          for(var i=0;i<5;i++)
+          {
+              this.message[i].psrc=JSON.parse(res.obj.play_message).index.person[i].img;
+              this.message[i].name=JSON.parse(res.obj.play_message).index.person[i].name;
+              this.message[i].per=JSON.parse(res.obj.play_message).index.person[i].role  //职位
+          }
+
+          for(var i=0;i<6;i++)
+          {
+              this.othermovie[i].psrc=JSON.parse(res.obj.play_message).index.sameMovie[i].img  //图片
+              this.othermovie[i].name=JSON.parse(res.obj.play_message).index.sameMovie[i].name //名字
+
+          }
+
+
 	      console.log(res)
 	  }, error => {
 	      console.log('displayoneAxiosError', error)
 	  }).catch(err => {
 	      throw err
 	  })
-
-        
     },
     methods: {
         open(title, msg) {
@@ -235,6 +259,7 @@
 				  id:this.reportId,
 				  type:this.radio,
 				  msg:this.textarea2
+
 				}).then(res => {
 				  console.log(res)
 				  this.$router.push('/user')
@@ -245,7 +270,7 @@
 				  throw err
 				})
 			}
-			
+
           }
      }
   }
