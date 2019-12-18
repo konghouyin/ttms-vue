@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <div v-for="item in formdata"  style="width: 730px; display: flex;align-items: flex-start;">
             <el-avatar size="large" :src="circleUrl" style="margin-right: 20px;"></el-avatar>
@@ -62,8 +63,8 @@
 
 
         methods: {
-            bj() {
-                eventBus.$emit('bjevent')
+            bj(id) {
+                eventBus.$emit('bjevent',id)
             }
         }
     }
