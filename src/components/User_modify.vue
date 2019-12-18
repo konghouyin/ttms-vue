@@ -88,8 +88,9 @@
     },
     mounted() {
         Axios.send('/managerselect', 'post',).then(res => {
-
-          console.log(res.obj.user_status.split(','))
+            console.log(1);
+          console.log(res)
+          console.log(2);
             let status = res.obj.user_status.split(',').map((item)=>{
                 if(item=="1")
                   return "剧目管理"
