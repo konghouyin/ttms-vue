@@ -231,6 +231,7 @@
 			}else{
 				Axios.send('/report/add', 'post', {
 				  //id:fComment.formdata.id,
+				  //playid: this.$router.history.current.query.id,
 				  id:this.reportId,
 				  type:this.radio,
 				  msg:this.textarea2
