@@ -36,10 +36,10 @@
       </el-form-item>
       <el-form-item label="兴趣" prop="type">
         <el-checkbox-group v-model="ruleForm.type">
-          <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-          <el-checkbox label="地推活动" name="type"></el-checkbox>
-          <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-          <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
+          <el-checkbox label="体育" name="type"></el-checkbox>
+          <el-checkbox label="艺术" name="type"></el-checkbox>
+          <el-checkbox label="学习" name="type"></el-checkbox>
+          <el-checkbox label="音乐" name="type"></el-checkbox>
         </el-checkbox-group>
       </el-form-item>
       <el-form-item label="个性签名" prop="desc">
