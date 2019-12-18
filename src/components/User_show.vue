@@ -56,21 +56,7 @@
 					} ,
 					power: ["票务经理" , "asd","asd"],
 					email: '123@mail.com'
-				},{
-					name: '狼',
-					password:{
-						item:'123456',
-						isShow:false
-					},
-					power: ["票理" , "assssd","asssd"],
-					email: '123@mail.com',
-				}],
-				formdata:[{
-					name:null,
-					password:null,
-					power:null,
-					email:null
-				}],
+				},],
 			}
 		},
 		mounted(){
@@ -79,20 +65,28 @@
 			}).then(res => {
 			  console.log(res)
 			  let list = []
-			  if (res.obj.length > 4) {
-			      for (var i = 0; i < 4; i++) {
-			          list.push({name:res.obj[i].user_name,password:res.obj[i].user_password,
-					  power:res.obj[i].user_status,email:res.obj[i].user_mail})
+			  res.obj.forEach(function(item){
+				  list.push({
+					name: item.user_name,
+					password:{
+						item:item.user_password,
+						isShow:false
+					},
+					power: item.user_status.split(',').map((item)=>{
+						if(item==1) return "剧目管理"
+						if(item==2) return "影厅管理"
+						if(item==3) return "计划管理"
+						if(item==4) return "财务管理"
+						if(item==5) return "人员管理"
+						if(item==6) return "评论管理"
+						if(item==7) return "销售管理"
+						if(item==8) return "用户"
+					}),
+					email: item.user_mail?item.user_mail:'',
+				})
+			  })
 			  
-			      }
-			  } else {
-			      res.obj.forEach(function(item) {
-			          list.push({name:item.user_name,id:item.user_password,
-					  power:item.user_status,email:item.user_mail})
-			      })
-			  }
-			  
-			  this.formdata = list
+			  this.UserData = list
 			}, error => {
 			  console.log('registerAxiosError', error)
 			}).catch(err => {
@@ -101,9 +95,6 @@
 		},
 		components:{
 
-		},
-		mounted(){
-			
 		},
 		methods:{
 			del :function(){

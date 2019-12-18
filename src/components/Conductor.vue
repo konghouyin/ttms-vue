@@ -3,20 +3,17 @@
     <el-table ref="filterTable" :data="tableData" style="width: 100%">
       <el-table-column prop="date" label="日期" sortable width="180" column-key="date" :filters="datecomputed"
         :filter-method="filterHandler">
-      </el-table-column>
-      <el-table-column prop="number" label="编号" width="100">
-      </el-table-column>
+      </el-table-column>·
       <el-table-column prop="name" label="姓名" column-key="name" :filters="namecomputed" :filter-method="filterHandler">
       </el-table-column>
-      <el-table-column prop="address" label="地址" :formatter="formatter">
+      <el-table-column prop="number" label="售票数" :formatter="formatter">
       </el-table-column>
-      <el-table-column prop="tag" label="标签" width="100" :filters="tagcomputed" :filter-method="filterTag"
-        filter-placement="bottom-end">
-        <template slot-scope="scope">
-          <el-tag :type="scope.row.tag === '长的帅' ? 'primary' : 'success'" disable-transitions>{{scope.row.tag}}</el-tag>
-        </template>
+
+      <el-table-column prop="money" label="销售业绩" :formatter="formatter">
+
       </el-table-column>
     </el-table>
+
     <div class="block">
       <el-autocomplete style="width:150px; margin-right: 20px; margin-top: 10px;" v-model="state" :fetch-suggestions="querySearchAsync"
         placeholder="请输入内容" @select="handleSelect"></el-autocomplete>
@@ -36,26 +33,9 @@
           date: '2016-05-02',
           number: '9527',
           name: 'ada',
-          address: '上海市普陀区金沙江路 1518 弄',
-          tag: '长的帅'
-        }, {
-          date: '2016-05-02',
-          number: '9527',
-          name: 'qwdq',
-          address: '上海市普陀区金沙江路 1518 弄',
-          tag: '长的帅'
-        }, {
-          date: '2016-05-03',
-          number: '9527',
-          name: 'asxa',
-          address: '上海市普陀区金沙江路 1518 弄',
-          tag: '老的快'
-        }, {
-          date: '2016-05-01',
-          number: '9527',
-          name: '1212',
-          address: '上海市普陀区金沙江路 1518 弄',
-          tag: '老的快'
+
+          money: '长的帅'
+
         }],
         restaurants: [],
         state: '',

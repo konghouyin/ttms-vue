@@ -14,6 +14,7 @@
 <script>
   import uPifn from './UserPifn.vue'
   import uOrder from './UserOrder.vue'
+  import Axios from '@/axios'
   export default {
     data() {
       return {
@@ -22,6 +23,7 @@
       };
 
     },
+    
     components: {
       uPifn,
       uOrder,
