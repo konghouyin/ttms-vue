@@ -248,7 +248,7 @@
                     throw err
                 })
             }
-        },
+        }
     }
 </script>
 

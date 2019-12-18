@@ -51,6 +51,16 @@
                 search: ''
             }
         },
+        mounted() {
+            Axios.send('/getPlan', 'get', {}).then(res => {
+                console.log(res)
+
+            }, error => {
+                console.log('getPlanAxiosError', error)
+            }).catch(err => {
+                throw err
+            })
+        },
         methods: {
             handleEdit(index, row) {
                 console.log(index, row);
