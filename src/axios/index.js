@@ -2,6 +2,7 @@ import axios from 'axios'
 
 axios.defaults.timeout = 20000
 axios.defaults.baseURL = 'http://localhost:8085/ttms-javaweb'
+axios.defaults.withCredentials = true
 
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
